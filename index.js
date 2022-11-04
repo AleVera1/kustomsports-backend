@@ -1,35 +1,29 @@
-class Usuario {
-  constructor(nombre, apellido, libros = [], mascotas = []) {
-      this.nombre = nombre;
-      this.apellido = apellido;
-      this.libros = libros;
-      this.mascotas = mascotas;
-  }
-  getFullName() {
-      return `${this.nombre} ${this.apellido}`;
-  }
-  addMascota(mascota) {
-      this.mascotas.push(mascota);
-  }
-  countMascotas() {
-      return `${this.mascotas.length}`;
-  }
-  addBook(nombre, autor) {
-      this.libros.push({
-        nombre: nombre,
-        autor: autor
-      });
-  }
-  getBookNames() {
-      return this.libros.map(libro => libro.nombre);
-  }
-}
+const Contenedor = require("./Contenedor");
 
-const usuario = new Usuario("Alejandro", "Vera")
+const contenedor = new Contenedor("productos.json");
 
-usuario.addBook([{libro: "El Señor De Los Anillos", autor: "Autor"}])
-usuario.addMascota([{mascota: "perro", nombre: "daisy"}])
+const main = async () => {
+  const id1 = await contenedor.save({ title: "Remera", price: 7500.66 });
+  const id2 = await contenedor.save({ title: "Zapatilla", price: 15700.75 });
+  const id3 = await contenedor.save({ title: "Camiseta", price: 10000 });
 
-console.log(usuario.getBookNames())
-console.log(usuario.countMascotas())
-console.log(usuario.getFullName())
+  console.log(id1, id2, id3); // 1, 2, 3
+
+  const object2 = await contenedor.getById(2);
+  console.log(object2); // { title: 'Zapatilla', price: 15700.75, id: 2 }
+
+  await contenedor.deleteById(2);
+
+  const allCurrentObjects = await contenedor.getAll();
+  console.log(allCurrentObjects);
+  /**
+     * [
+        { title: 'Remera', price: 7500.66, id: 1 },
+        { title: 'Camiseta', price: 10000, id: 3 }
+        ]
+    */
+
+  //await contenedor.deleteAll();
+};
+
+main();
