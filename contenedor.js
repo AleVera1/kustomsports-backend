@@ -3,26 +3,26 @@ const fs = require("fs");
 class Contenedor {
   constructor(fileName) {
     this._filename = fileName;
-    this._readFileOrCreateNewOne();
+    this.readFileOrCreateANewOne();
   }
 
-  async _readFileOrCreateNewOne() {
+  async readFileOrCreateANewOne() {
     try {
       await fs.promises.readFile(this._filename, "utf-8");
     } catch (error) {
       error.code === "ENOENT"
-        ? this._createEmptyFile()
+        ? this.createEmptyFile()
         : console.log(
             `Error Code: ${error.code} | There was an unexpected error when trying to read ${this._filename}`
           );
     }
   }
 
-  async _createEmptyFile() {
+  async createEmptyFile() {
     fs.writeFile(this._filename, "[]", (error) => {
       error
         ? console.log(error)
-        : console.log(`File ${this._filename} was created since it didn't exist in the system`);
+        : console.log(`File ${this._filename} was not created because it didn't exist in the system`);
     });
   }
 
@@ -43,12 +43,12 @@ class Contenedor {
     try {
       const data = await this.getData();
       const parsedData = JSON.parse(data);
-      const objectIdToBeRemoved = parsedData.find(
+      const objIdRemove = parsedData.find(
         (producto) => producto.id === id
       );
 
-      if (objectIdToBeRemoved) {
-        const index = parsedData.indexOf(objectIdToBeRemoved);
+      if (objIdRemove) {
+        const index = parsedData.indexOf(objIdRemove);
         parsedData.splice(index, 1);
         await fs.promises.writeFile(this._filename, JSON.stringify(parsedData));
       } else {
@@ -81,7 +81,7 @@ class Contenedor {
 
   async deleteAll() {
     try {
-      await this._createEmptyFile();
+      await this.createEmptyFile();
     } catch (error) {
       console.log(
         `There was an error (${error.code}) when trying to delete all the objects`

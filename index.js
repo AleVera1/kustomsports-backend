@@ -16,12 +16,6 @@ const main = async () => {
 
   const allCurrentObjects = await contenedor.getAll();
   console.log(allCurrentObjects);
-  /**
-     * [
-        { title: 'Remera', price: 7500.66, id: 1 },
-        { title: 'Camiseta', price: 10000, id: 3 }
-        ]
-    */
 
   //await contenedor.deleteAll();
 };
