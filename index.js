@@ -1,23 +1,31 @@
 const Contenedor = require("./Contenedor");
+const express = require("express");
+
+const PORT = 8080
+const app = express()
 
 const contenedor = new Contenedor("productos.json");
 
-const main = async () => {
-  const id1 = await contenedor.save({ title: "Remera", price: 7500.66 });
-  const id2 = await contenedor.save({ title: "Zapatilla", price: 15700.75 });
-  const id3 = await contenedor.save({ title: "Camiseta", price: 10000 });
+app.get('/', (req, res) => {
+  res.send('Bienvenido al servidor express')
+})
 
-  console.log(id1, id2, id3); // 1, 2, 3
+app.get('/productos', async (req, res) => {
+  const allProducts = await contenedor.getAll()
+  res.json(allProducts)
+})
 
-  const object2 = await contenedor.getById(2);
-  console.log(object2); // { title: 'Zapatilla', price: 15700.75, id: 2 }
+app.get('/productoRandom', async (req, res) => {
+  const allProducts = await contenedor.getAll()
+  const randomNumber = Math.floor(Math.random() * allProducts.length)
+  
+  res.send(allProducts[randomNumber])
+})
 
-  await contenedor.deleteById(2);
+const server = app.listen(PORT, () => {
+  console.log(`server is listening on port ${PORT}`)
+})
 
-  const allCurrentObjects = await contenedor.getAll();
-  console.log(allCurrentObjects);
-
-  //await contenedor.deleteAll();
-};
-
-main();
+server.on("error", (err) => {
+  console.error(`Error: ${err}`)
+})

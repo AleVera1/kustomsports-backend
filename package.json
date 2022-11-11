@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/AleVera1/kustomsports-backend/issues"
   },
-  "homepage": "https://github.com/AleVera1/kustomsports-backend#readme"
+  "homepage": "https://github.com/AleVera1/kustomsports-backend#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }

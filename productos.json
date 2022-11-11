@@ -1,1 +1,17 @@
-[{"title":"Remera","price":7500.66,"id":1},{"title":"Camiseta","price":10000,"id":3}]
+[
+  {
+    "title":"Remera",
+    "price":7500.66,
+    "id":1
+  },
+  {
+    "title":"Zapatilla",
+    "price":14000,
+    "id":2
+  },
+  {
+    "title":"Camiseta",
+    "price":10000,
+    "id":3
+  }
+]
