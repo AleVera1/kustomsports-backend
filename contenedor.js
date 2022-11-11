@@ -45,7 +45,7 @@ class Contenedor {
       const parsedData = JSON.parse(data);
       const objIdRemove = parsedData.find(
         (producto) => producto.id === id
-      );
+      )
 
       if (objIdRemove) {
         const index = parsedData.indexOf(objIdRemove);
