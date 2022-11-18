@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs from 'fs';
 
 class Contenedor {
   constructor(fileName) {
@@ -41,6 +41,7 @@ class Contenedor {
 
   async deleteById(id) {
     try {
+      id = Number(id)
       const data = await this.getData();
       const parsedData = JSON.parse(data);
       const objIdRemove = parsedData.find(
@@ -59,6 +60,30 @@ class Contenedor {
       console.log(
         `Error Code: ${error.code} | There was an error when trying to delete an element by its ID (${id})`
       );
+    }
+  }
+
+  async updateById(id, newData){
+    try {
+      id = Number(id);
+      const data = await this.getData();
+      const objIdUpdate = parsedData.find(
+      (producto) => producto.id === id
+      )
+
+      if (objIdUpdate) {
+      const index = parsedData.indexOf(objIdUpdate);
+      const {title, price, thumbnail} = newData;
+      
+      parsedData[index]['title'] = title
+      parsedData[index]['price'] = price
+      parsedData[index]['thumbnail'] = thumbnail
+      await fs.promises.writeFile(this._filename, JSON.stringify(parsedData))
+      return true
+      }
+    } catch (error){
+      console.log(`Id ${id} does not exist in the file`)
+      return null
     }
   }
 
@@ -100,4 +125,4 @@ class Contenedor {
   }
 }
 
-module.exports = Contenedor;
+export default Contenedor;
