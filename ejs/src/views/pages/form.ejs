@@ -8,10 +8,10 @@
   <!-- Favicon-->
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
   <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="./styles.css" rel="stylesheet" />
+  <link href="./css/styles.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-  <header>
+  
   <div class="d-flex" id="wrapper">
     <!-- Sidebar-->
     <div class="border-end bg-white" id="sidebar-wrapper">
@@ -29,36 +29,37 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         </div>
       </nav>
+      <div class="container-fluid px-5 pt-3">
+        <h2>Agregar Producto</h2>
+        <div class="row g-3">
+          <form class="row g-3" action="/productos" method="POST"> 
+            <div class="col-sm-3">
+              <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="basic-addon1">Nombre</span>
+                <input type="text" name="title" required class="form-control" placeholder="Nombre del producto" aria-label="Nombre" aria-describedby="basic-addon1">
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="basic-addon2">Precio</span>
+                <input type="text" name="price" required class="form-control" placeholder="Precio" aria-label="Precio" aria-describedby="basic-addon1">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="basic-addon3">Imagen</span>
+                <input type="text" name="thumbnail" required class="form-control" placeholder="URL de la imágen" aria-label="Thumbnail" aria-describedby="basic-addon1">
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary btn-sm" type="submit">Agregar a la lista</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-</header>
-  <h2>Agregar Producto</h2>
-  <div class="row g-3">
-    <form class="row g-3" action="/productos" method="POST"> 
-      <div class="col-sm-3">
-        <div class="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="basic-addon1">Nombre</span>
-          <input type="text" name="title" required class="form-control" placeholder="Nombre del producto" aria-label="Nombre" aria-describedby="basic-addon1">
-        </div>
-      </div>
-      <div class="col-sm-2">
-        <div class="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="basic-addon2">Precio</span>
-          <input type="text" name="price" required class="form-control" placeholder="Precio" aria-label="Precio" aria-describedby="basic-addon1">
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="basic-addon3">Imagen</span>
-          <input type="text" name="thumbnail" required class="form-control" placeholder="URL de la imágen" aria-label="Thumbnail" aria-describedby="basic-addon1">
-        </div>
-      </div>
-      <div class="col-sm-2">
-        <div class="d-grid gap-2">
-          <button class="btn btn-primary btn-sm" type="submit">Agregar a la lista</button>
-        </div>
-      </div>
-    </form>
   </div>
   <!-- Bootstrap core JS-->
   <script src="./js/bootstrap.bundle.min.js"></script>
