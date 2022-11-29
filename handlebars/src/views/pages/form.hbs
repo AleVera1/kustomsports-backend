@@ -1,0 +1,33 @@
+<h2>Agregar Producto</h2>
+<div class="row g-3">
+  <form class="row g-3" action="/productos" method="POST"> 
+  
+    <div class="col-sm-3">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="basic-addon1">Nombre</span>
+        <input type="text" name="title" required class="form-control" placeholder="Nombre del producto" aria-label="Nombre" aria-describedby="basic-addon1">
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="basic-addon2">Precio</span>
+        <input type="text" name="price" required class="form-control" placeholder="Precio" aria-label="Precio" aria-describedby="basic-addon1">
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="basic-addon3">Imagen</span>
+        <input type="text" name="thumbnail" required class="form-control" placeholder="URL de la imágen" aria-label="Thumbnail" aria-describedby="basic-addon1">
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary btn-sm" type="submit">Agregar a la lista</button>
+      </div>
+    </div>
+
+  </form>
+</div>

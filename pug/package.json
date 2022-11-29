@@ -1,0 +1,27 @@
+{
+  "name": "kustomsports-backend",
+  "version": "1.0.0",
+  "description": "desafio5",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AleVera1/kustomsports-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AleVera1/kustomsports-backend/issues"
+  },
+  "homepage": "https://github.com/AleVera1/kustomsports-backend#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "handlebars": "^4.7.7",
+    "pug": "^3.0.2"
+  }
+}
