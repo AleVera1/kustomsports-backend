@@ -1,9 +1,9 @@
 {
   "name": "kustomsports-backend",
   "version": "1.0.0",
-  "description": "desafio2",
-  "type": "module",
+  "description": "desafio5",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./src/server.js"
@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/AleVera1/kustomsports-backend#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "handlebars": "^4.7.7"
   }
 }
