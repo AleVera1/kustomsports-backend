@@ -11,11 +11,10 @@ const __dirname = dirname(__filename);
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(express.static(__dirname + '/public'));
 
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
-
-app.use(express.static(__dirname + '/public'));
 
 app.get('/productos', async (req, res) => {
   const productos = await contenedor.getAll();
