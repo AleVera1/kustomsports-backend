@@ -23,6 +23,25 @@ export async function createProductoTable() {
   }
 }
 
+export async function createMensajesTable() {
+  try {
+    const isCreated = await knex.schema.hasTable('mensajes');
+    if(isCreated) {
+      console.log('🔴 La tabla <mensajes> ya existe creada en la DB')
+    } else {
+      await knex.schema.createTable('mensajes', (table) => {
+        table.increments('id').primary().notNullable(),
+        table.timestamp('date').notNullable(),
+        table.string('email', 100).notNullable(),
+        table.string('message', 300)
+      })
+      console.log('🟢 La tabla <mensajes> ha sido creada')
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function createCarritoTable() {
   try {
     const isCreated = await knex.schema.hasTable('carrito');

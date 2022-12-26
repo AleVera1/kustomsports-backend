@@ -2,6 +2,7 @@ import express, {json , urlencoded} from 'express';
 import { ProductoDao } from './dao/ProductoDao.js';
 import { CarritoDao } from './dao/CarritoDao.js'
 import { ProductoCarritoDao } from './dao/ProductoCarritoDao.js';
+import { MensajesDao } from './dao/mensajesDao.js';
 import knex from 'knex';
 import { fileURLToPath } from "url";
 import { dirname } from "path";
@@ -22,13 +23,16 @@ const authMiddleware = ((req, res, next) => {
 
 const routerProducts = express.Router();
 const routerCart = express.Router();
+const routerMessages = express.Router();
 
 app.use('/api/productos', routerProducts);
 app.use('/api/carrito', routerCart);
+app.use('/api/mensajes', routerMessages);
 
 const productoDao = new ProductoDao();
 const carritoDao = new CarritoDao();
 const productoCarritoDao = new ProductoCarritoDao();
+const mensajesDao = new MensajesDao();
 
 /* --- Product Endpoints --- */
 
@@ -147,6 +151,27 @@ routerCart.get('/:id/productos', async(req, res) => {
         res.status(404).json({"error": "cart not found or has no products."})
     }
 })
+
+/* --- Mensajes Endpoints --- */
+
+routerMessages.post('/mensajes', async (req, res) => {
+    try {
+        let mensaje = await mensajes.save(req.body);
+        res.send(mensaje);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+routerMessages.get('/mensajes', async (req, res) => {
+    try {
+        let mensajes = await mensajes.getAll(req.query);
+        res.send(mensajes);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
 
 const PORT = 1234;
 const server = app.listen(PORT, () => {

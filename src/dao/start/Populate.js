@@ -43,6 +43,13 @@ const productos = [
   }
 ]
 
+const mensajes = [
+  {"email":"aevlanus@gmail.com","message":"Hola, todo bien?","date":"5/12/2022, 15:06:18","id":1},
+  {"email":"pedro@gmail.com","message":"Hola, todo bien, vos?","date":"5/12/2022, 15:06:33","id":2},
+  {"email":"aevlanus@gmail.com","message":"Todo bien por suerte!","date":"5/12/2022, 15:06:52","id":3},
+  {"email":"pedro@gmail.com","message":"Genial me alegro!","date":"5/12/2022, 15:07:13","id":4}
+]
+
 const carritos = [
   {
     timestamp: new Date().toISOString().slice(0, 19).replace('T', ' '),
@@ -96,4 +103,13 @@ export async function populateProductoCarrito() {
   } catch(error) {
     console.log(error);
   }
+}
+
+export async function populateMessages() {
+  try {
+    await knex.insert(mensajes).from('mensajes');
+    console.log('Se agregaron Mensajes a la tabla')
+  } catch (error) {
+    console.log(error);
+  } 
 }
