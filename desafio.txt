@@ -29,3 +29,4 @@ db.mensajes.estimatedDocumentCount()
 13- db.productos.deleteMany({price: {$lt: 1000}})
 
 14- db.createUser({user: 'pepe', pwd: 'asd456', roles: [{role: 'read', db: 'ecommerce'}]})
+
