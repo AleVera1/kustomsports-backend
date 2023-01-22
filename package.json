@@ -20,8 +20,11 @@
   },
   "homepage": "https://github.com/AleVera1/kustomsports-backend#readme",
   "dependencies": {
+    "@firebase/firestore": "^3.8.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "firebase": "^9.16.0",
+    "firebase-admin": "^11.5.0",
     "mongoose": "^6.8.4"
   }
 }

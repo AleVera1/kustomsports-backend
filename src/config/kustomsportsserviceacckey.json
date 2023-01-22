@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "kustomsportsbackend",
+  "private_key_id": "1b196cc7f3a65e3d8c1eef68f8ff911b2e025a9a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDaIhpjRLxhTSRX\nIwfwv3qHUkXdkJ6i1Z4r6vl4ABQQScJXJ93uLkvhDyNjAb1uxuOk7oHKXvwaFHXN\nAxKKZmInF3Nq34G+5qTBeYiC79I5tIVKqflK5jK3MJtBeRFLPnGzv9D8HrPicYEA\n8stRzZqlut8QikIHFFwxhRgpZCJYJtlJJ1RfVn8I2Nsvp6Ms/zbAq3RdTXyanT8T\nSbjiwcJWazlNriPZv4maEjvjuGJkRrdPV/gNtJyzcUdtTuj9/7TJAzlD5xC8D2A7\nKoq6pfsbkg8r5VIDEKXXx3lf79WiyhWJzu1h/FnGIwqXMMr16PyBXUQcz3QNuImS\nf+jgeQPjAgMBAAECggEAHz2HHfR4Lk9IBxrDRl2GBN9pliPiNFv3vT534BHSzcpi\nhOz2wefrgh4S6VkUcksVy0dFW2BjJrELdgMcoqmrIQIgy4ubH2YU7oijXm1OZGlQ\nNbNGOs3hMY9KjQPz0BzvV9j+6zzScnnjCem76MlTfqzWyZ2jezQVSBpRrYvjx0/1\nR6cwvoJKDhqjxkcMTyAJOmjd2SuDqJWX84ubuuQPDPhK1uW3PJCfS6NGCpRfhSdY\nUj5aKCucR7m0oaY4l9GXyj2e7fU0ByDd5wD5mPbe3TvqSTWWG6D4L2j8DdoJkZro\nJkddH9au/kZDvZ5mx0t5woa4VCszPnK4Ps6rVUMGgQKBgQD3lz0PINcXJbIC2YpQ\nSelB/irgGEM2xb+IAfZtkAw9/MEfroZwBdML0YJP7hqLxWyTofMwrw7ki7H6Cqef\nLFAHzbYG0OSz9YEzXbN4xPzB9yfV3iPtB/WLqsARFEOpbmENM9GVGk5rycpRnm3o\nTDP0qop6byX42dqHpHJhTIfagwKBgQDhirxiN9CBWeL9L8xpP1+yeF385PEMY2yC\nuUt1eeGYLZtEkvm2thbTT0iUd2DLgV8zEkqjhDz47GXi3j0u7NjDFCM3erJysgU6\nc4+Z1/kye//5jzfW9LG30CdxRf82akrDrjWMA7dYDtvpy+r35BFojhiWbquf7ISH\nGQNFP29zIQKBgQDNl5RoP4jb+705iJLF4NoEpp3Lv9nwXXyR369Vg0vnHT7wo+eW\nlf+NzMc8wCbi8Wkbnltmjbb8KNP9IWPXVOCP2k3Qkx2WIcLLeH9TRZ/tIOK/QNrs\nNLO86mjaxcz5oGKOp/zcpx9/eey6oaf6QWzTOdoLmMgbQCuqfu9LxFT7KQKBgEsW\nwG9Gu9FE1tCKaFil87tcXZZDtoj0VP0Uqa273UKn9GiZMjAFYYYKgFSFhiFauhIr\nxdO4w//v3F/ys5X63pPcEXl4DQ8oe5shPC7w+5M2O1ufteyH3N8gmvEYZ8Z7Dtcl\nGci6uADGOasV6+2J7c3MeR0kTVlaCilcR313iChhAoGBALhG8P+KS7S+5QK76XQc\nPA78kbzT8IuKBTZAQv7kBAx8rMZwWL2A8Ec315g/GrnsfypO4UfKfKVCQiBLrNkJ\ne/1KohSH70l0YTpLRNzOANr9V4FeEC2Z/c36QocpKMLTwN0JcMkVoW0No4N0rzTM\nl09IcQOduoi97MzFIa61Z5Ed\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-21g6v@kustomsportsbackend.iam.gserviceaccount.com",
+  "client_id": "111346358511920200798",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-21g6v%40kustomsportsbackend.iam.gserviceaccount.com"
+}

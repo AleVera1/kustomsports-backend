@@ -1,6 +1,8 @@
 import express from 'express';
-import productRouter from './routes/product.js';
-import cartRouter from './routes/cart.js';
+//import productRouter from './routes/product.js';
+import productRouter from './routes/productFirebase.js';
+//import cartRouter from './routes/cart.js';
+import cartRouter from './routes/cartFirebase.js';
 
 const PORT = 8080;
 const app = express();
