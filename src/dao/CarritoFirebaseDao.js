@@ -1,4 +1,4 @@
-import {db} from "../config/dbFirestore.js";
+import db from '../config/dbFirebase.js'
 
 export default class CarritoDao {
   ID_FIELD = "id";

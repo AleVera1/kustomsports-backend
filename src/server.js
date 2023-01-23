@@ -1,6 +1,8 @@
 import express from 'express';
-//import productRouter from './routes/product.js';
+//ACTIVAR PARA USAR MONGO
+//import productRouter from './routes/product.js'; 
 import productRouter from './routes/productFirebase.js';
+//ACTIVAR PARA USAR MONGO
 //import cartRouter from './routes/cart.js';
 import cartRouter from './routes/cartFirebase.js';
 
