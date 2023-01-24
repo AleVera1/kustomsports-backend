@@ -1,13 +1,13 @@
 import "../config/db.js";
-import { ProductosModel } from "../modules/productos.modules.js";
+import { MensajesModel } from "../modules/mensajes.modules.js";
 
-export class ProductoDao {
+export class MensajesDao {
 
   ID_FIELD = "_id";
   
   static async exists(id) {
     try {
-      return await ProductosModel.findById(id);
+      return await MensajesModel.findById(id);
     } catch (error) {
       console.log(error);
     }
@@ -15,22 +15,22 @@ export class ProductoDao {
 
   async getAll() {
     try {
-      return await ProductosModel.find().lean();
+      return await MensajesModel.find();
     } catch (error) {
       console.log(error);
       return false;
     }
   }
   
-  async getProductById(objectId) {
+  async getMessageById(objectId) {
     try {
-      const product = await ProductosModel.findOne({
+      const message = await MensajesModel.findOne({
         [this.ID_FIELD] : objectId  
       })
 
-      console.log(product);
+      console.log(message);
 
-      return product;
+      return message;
 
     } catch (error) {
       console.log(error);
@@ -38,18 +38,18 @@ export class ProductoDao {
     }
   }
   
-  async createProduct(object) {
+  async createMessage(object) {
     try {
-      return await ProductosModel.create(object)
+      return await MensajesModel.create(object)
     } catch (error) {
       console.log(error);
       return false;
     }
   }
   
-  async updateProductById(id, object) {
+  async updateMessageById(id, object) {
     try {
-      await ProductosModel.findByIdAndUpdate(
+      await MensajesModel.findByIdAndUpdate(
         {
           [this.ID_FIELD] : id
         },
@@ -64,9 +64,9 @@ export class ProductoDao {
     }
   }
   
-  async deleteProductById(id) {
+  async deleteMessageById(id) {
     try {
-      return await ProductosModel.findByIdAndDelete({[this.ID_FIELD]: id})
+      return await MensajesModel.findByIdAndDelete({[this.ID_FIELD]: id})
     } catch (error) {
       console.log(error);
       return false;

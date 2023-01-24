@@ -20,11 +20,15 @@
   },
   "homepage": "https://github.com/AleVera1/kustomsports-backend#readme",
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@firebase/firestore": "^3.8.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
     "firebase": "^9.16.0",
     "firebase-admin": "^11.5.0",
-    "mongoose": "^6.8.4"
+    "handlebars": "^4.7.7",
+    "mongoose": "^6.8.4",
+    "socket.io": "^4.5.4"
   }
 }
