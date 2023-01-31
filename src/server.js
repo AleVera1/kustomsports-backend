@@ -1,11 +1,8 @@
 import express from 'express';
 import { engine } from 'express-handlebars';
-//ACTIVAR PARA USAR MONGO
 import productRouter from './routes/product.js'; 
-//import productRouter from './routes/productFirebase.js';
-//ACTIVAR PARA USAR MONGO
 import cartRouter from './routes/cart.js';
-//import cartRouter from './routes/cartFirebase.js';
+import userRouter from './routes/user.js';
 import { MensajesDao } from './dao/MensajesDao.js';
 import { ProductoDao } from './dao/ProductoDao.js';
 import { ProductMocker } from './mocks/productMocker.js'
@@ -13,6 +10,9 @@ import http from 'http';
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import { Server } from 'socket.io'
+import session from 'express-session';
+import path from 'path';
+import mongoStore from 'connect-mongo';
 
 const PORT = 8080;
 const app = express();
@@ -24,14 +24,32 @@ const productosDao = new ProductoDao();
 const chat = new MensajesDao();
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static('public'));
+
+app.use(
+  session({
+    store: mongoStore.create({
+        mongoUrl: process.env.MONGO_URI,
+        options: {
+            userNewParser: true,
+            useUnifiedTopology: true,
+        }
+    }),
+    secret: process.env.SECRET,
+    resave: true,
+    saveUninitialized: true,
+    cookie: {maxAge: 600000} //10 min.
+    
+}))
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(express.static('public'));
 
 app.use('/api/productos', productRouter);
 app.use('/api/carrito', cartRouter);
+app.use('/', userRouter);
 
 app.set('views', './src/views');
 app.set('view engine', 'hbs');
@@ -43,6 +61,7 @@ app.engine('hbs', engine({
   partialsDir: __dirname + '/views/partials',
   allowProtoPropertiesByDefault: true
 }))
+
 
 
 io.on('connection', async(socket) => {
@@ -93,8 +112,9 @@ app.post('/productos', async(req,res) => {
 })
 
 app.get('/', (req,res) => {
-  res.render('pages/form', {})
+  res.render('pages/form', {status: req.session.login})
 })
+
 
 server.listen(PORT, () => console.log(` >>>>> 🚀 Server started at http://localhost:${PORT}`));
 
