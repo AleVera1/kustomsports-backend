@@ -1,3 +1,4 @@
+{{#if status}}
 <h2>Agregar Producto</h2>
 <div class="row g-3">
 
@@ -97,6 +98,9 @@
         
     </tbody>
   </table>
+  {{else}}
+    <h1>Necesitas loguearte para ver todo el contenido</h1>
+  {{/if}}
 
   <script>
     const socket = io();

@@ -1,3 +1,4 @@
+{{#if status}}
 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/">
     ✏ Agregar Producto
 </a>
@@ -9,3 +10,13 @@
 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/productosRandoms">
     📄 Lista de Productos Randoms
 </a>
+
+<a class="list-group-item list-group-item-action list-group-item-light p-3" href="/logout">
+    👋 Log out
+</a>
+
+{{else}}
+<a class="list-group-item list-group-item-action list-group-item-light p-3" href="/login">
+    👉 Log in
+</a>
+{{/if}}
