@@ -1,5 +1,7 @@
 import express from "express";
 import session from 'express-session';
+import passport from "passport";
+import { User } from "../modules/user.modules.js";
 
 const router = express.Router();
 
@@ -12,21 +14,16 @@ router.get('/login', async(req, res) => {
     
 })
 
-router.post('/login', async(req, res) => {
-    const {user, pass} = req.body;
-    // Ugly user and pass validation below:
-    if (process.env.DUMMYUSER === user && process.env.DUMMYPASS === pass) {
-        req.session.login=true;
-        res.redirect('/')
-    } else {
-        req.session.login=false;
-        res.redirect('/login')
-    }
-    
+router.post('/login', passport.authenticate("login", { failureRedirect: "/loginError" }), async(req, res) => {
+    const {username, password} = req.body;
+    req.session.username = username;
+    req.session.login = true;
+    console.log('Login successful');
+    res.redirect("/");
 })
 
 router.get('/', async(req, res) => {
-    res.render('pages/form', {status: req.session.login})
+    res.render('pages/form', {status: req.session.login, username: req.session.username})
 })
 
 router.get('/logout', async(req, res) => {
@@ -37,6 +34,20 @@ router.get('/logout', async(req, res) => {
             res.render('pages/logout', {status: false});
         }
     })
+})
+
+router.get('/register', async(req, res) => {
+    res.render('pages/register')
+})
+
+router.post('/register', passport.authenticate("register", {failureRedirect: "/registerError"}), async (req, res) => res.redirect("/"))
+
+router.get('/registerError', async(req, res) => {
+  res.render('pages/registerError')
+})
+
+router.get('/loginError', async(req, res) => {
+  res.render('pages/loginError')
 })
 
 export default router;

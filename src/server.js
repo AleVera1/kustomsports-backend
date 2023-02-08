@@ -13,6 +13,13 @@ import { Server } from 'socket.io'
 import session from 'express-session';
 import path from 'path';
 import mongoStore from 'connect-mongo';
+import {Strategy} from 'passport-twitter';
+import { passportStrategies } from "./lib/passport.lib.js";
+import { User } from "./modules/user.modules.js"
+import passport from "passport";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const PORT = 8080;
 const app = express();
@@ -43,6 +50,34 @@ app.use(
     cookie: {maxAge: 600000} //10 min.
     
 }))
+
+passport.use(new Strategy({
+  consumerKey: process.env.TWITTER_ID,
+  consumerSecret: process.env.TWITTER_SECRET,
+  callbackURL: '/auth/twitter/callback',
+  profileFields: ['id', 'displayName', 'photos'],
+  scope: ['email']
+},
+(token, secretToken, userProfile, done) => {
+  return done(null, userProfile);
+}))
+
+passport.use("login", passportStrategies.loginStrategy);
+passport.use("register", passportStrategies.registerStrategy);
+
+passport.serializeUser((user, done) => {
+  done(null, user._id)
+})
+//
+passport.deserializeUser((id, done) => {
+  User.findById(id).then((data) => {
+    done(null, data);
+})
+    .catch((err) => { console.error(err); })
+})
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -110,11 +145,6 @@ app.post('/productos', async(req,res) => {
   await productosDao.createProduct(body);
   res.redirect('/');
 })
-
-app.get('/', (req,res) => {
-  res.render('pages/form', {status: req.session.login})
-})
-
 
 server.listen(PORT, () => console.log(` >>>>> 🚀 Server started at http://localhost:${PORT}`));
 
