@@ -13,7 +13,6 @@ import { Server } from 'socket.io'
 import session from 'express-session';
 import path from 'path';
 import mongoStore from 'connect-mongo';
-import {Strategy} from 'passport-twitter';
 import { passportStrategies } from "./lib/passport.lib.js";
 import { User } from "./modules/user.modules.js"
 import passport from "passport";
@@ -49,17 +48,6 @@ app.use(
     saveUninitialized: true,
     cookie: {maxAge: 600000} //10 min.
     
-}))
-
-passport.use(new Strategy({
-  consumerKey: process.env.TWITTER_ID,
-  consumerSecret: process.env.TWITTER_SECRET,
-  callbackURL: '/auth/twitter/callback',
-  profileFields: ['id', 'displayName', 'photos'],
-  scope: ['email']
-},
-(token, secretToken, userProfile, done) => {
-  return done(null, userProfile);
 }))
 
 passport.use("login", passportStrategies.loginStrategy);
