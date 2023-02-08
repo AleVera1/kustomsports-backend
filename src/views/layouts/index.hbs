@@ -39,9 +39,10 @@
                 {{/if}}
                 </li>
                 {{#if status}}
-                    <li class="nav-item active"><a class="nav-link" href="/logout">Desconectarse</a></li>
+                <li class="nav-item active"><strong>{{username}}</strong></li>
+                <li class="nav-item active"><a class="nav-link" href="/logout">Desconectarse</a></li>
                 {{else}}
-                    <li class="nav-item active"><a class="nav-link" href="/login">Conectarse</a></li>    
+                <li class="nav-item active"><a class="nav-link" href="/login">Conectarse</a></li>    
                 {{/if}} 
               </ul>
             </div>
