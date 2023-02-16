@@ -3,6 +3,7 @@ import { engine } from 'express-handlebars';
 import productRouter from './routes/product.js'; 
 import cartRouter from './routes/cart.js';
 import userRouter from './routes/user.js';
+import otherRouter from './routes/other.js';
 import { MensajesDao } from './dao/MensajesDao.js';
 import { ProductoDao } from './dao/ProductoDao.js';
 import { ProductMocker } from './mocks/productMocker.js'
@@ -13,14 +14,15 @@ import { Server } from 'socket.io'
 import session from 'express-session';
 import path from 'path';
 import mongoStore from 'connect-mongo';
+import mongoose from 'mongoose';
 import { passportStrategies } from "./lib/passport.lib.js";
 import { User } from "./modules/user.modules.js"
 import passport from "passport";
+import parseArgs from "minimist";
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const PORT = 8080;
 const app = express();
 
 const server = http.createServer(app)
@@ -72,6 +74,7 @@ app.use(express.urlencoded({extended:true}));
 
 app.use('/api/productos', productRouter);
 app.use('/api/carrito', cartRouter);
+app.use('/test', otherRouter);
 app.use('/', userRouter);
 
 app.set('views', './src/views');
@@ -134,6 +137,18 @@ app.post('/productos', async(req,res) => {
   res.redirect('/');
 })
 
-server.listen(PORT, () => console.log(` >>>>> 🚀 Server started at http://localhost:${PORT}`));
+const args = process.argv.slice(2);
+const options = {
+  alias: {
+    p: "port"
+  },
+  default:{
+    port: 8080
+  }
+};
+
+const minimistArgs = parseArgs(args, options);
+
+server.listen(minimistArgs.port, () => console.log(` >>>>> 🚀 Server started at http://localhost:${minimistArgs.port}`));
 
 server.on('error', (err) => console.log(err))
