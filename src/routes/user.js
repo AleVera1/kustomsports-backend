@@ -1,7 +1,6 @@
 import express from "express";
 import session from 'express-session';
 import passport from "passport";
-import { User } from "../modules/user.modules.js";
 
 const router = express.Router();
 
@@ -49,5 +48,16 @@ router.get('/registerError', async(req, res) => {
 router.get('/loginError', async(req, res) => {
   res.render('pages/loginError')
 })
+
+router.get('/info', (_req, res) => {
+    let args = process.argv;
+    let so = process.platform;
+    let nodeVer = process.version;
+    let rss = process.memoryUsage.rss();
+    let execPath = process.execPath;
+    let pId = process.pid;
+    let folder = process.cwd();
+    res.render("pages/info", {args, so, nodeVer, rss, execPath, pId, folder})
+  })
 
 export default router;
