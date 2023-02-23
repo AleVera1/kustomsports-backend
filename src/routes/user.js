@@ -57,7 +57,8 @@ router.get('/info', (_req, res) => {
     let execPath = process.execPath;
     let pId = process.pid;
     let folder = process.cwd();
-    res.render("pages/info", {args, so, nodeVer, rss, execPath, pId, folder})
+    let cores = os.cpus().length;
+    res.render("pages/info", {args, so, nodeVer, rss, execPath, pId, folder, cores})
   })
 
 export default router;
