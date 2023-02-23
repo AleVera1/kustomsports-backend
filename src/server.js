@@ -14,7 +14,8 @@ import { Server } from 'socket.io'
 import session from 'express-session';
 import path from 'path';
 import mongoStore from 'connect-mongo';
-import mongoose from 'mongoose';
+import cluster from "cluster";
+import os from "os";
 import { passportStrategies } from "./lib/passport.lib.js";
 import { User } from "./modules/user.modules.js"
 import passport from "passport";
@@ -26,7 +27,6 @@ dotenv.config();
 const app = express();
 
 const server = http.createServer(app)
-const io = new Server(server);
 
 const productosDao = new ProductoDao();
 const chat = new MensajesDao();
@@ -89,37 +89,6 @@ app.engine('hbs', engine({
 }))
 
 
-
-io.on('connection', async(socket) => {
-  console.log('🟢 Usuario conectado')
-  
-  const productos = await productosDao.getAll();
-
-  socket.emit('bienvenidoLista', productos )
-  
-  const mensajes = await chat.getAll();
-  socket.emit('listaMensajesBienvenida', mensajes)
-  
-  socket.on('nuevoMensaje', async(data) => {
-    await chat.createMessage(data);
-    
-    const mensajes = await chat.getAll();
-    io.sockets.emit('listaMensajesActualizada', mensajes)
-  })
-
-  socket.on('productoAgregado', async(data) => {    
-    console.log('Alguien presionó el click')
-    await productosDao.createProduct(data);
-    
-    const productos = await productosDao.getAll();
-    io.sockets.emit('listaActualizada', productos);
-  })
-  
-  socket.on('disconnect', () => {
-    console.log('🔴 Usuario desconectado')
-  })
-})
-
 app.get('/productos', async(req, res) => {
   const productos = await productosDao.getAll();
   res.render('pages/list', {productos})
@@ -135,20 +104,79 @@ app.post('/productos', async(req,res) => {
   const {body} = req;
   await productosDao.createProduct(body);
   res.redirect('/');
+  return;
 })
 
 const args = process.argv.slice(2);
 const options = {
   alias: {
-    p: "port"
+    p: "port",
+    m: "mode"
   },
   default:{
-    port: 8080
+    port: 8080,
+    mode: "fork"
   }
 };
 
 const minimistArgs = parseArgs(args, options);
 
-server.listen(minimistArgs.port, () => console.log(` >>>>> 🚀 Server started at http://localhost:${minimistArgs.port}`));
+const cpus = os.cpus();
 
-server.on('error', (err) => console.log(err))
+const startServer = () => {
+  const expressServer = server.listen(minimistArgs.port, () => console.log(` >>>>> 🚀 Server started at http://localhost:${minimistArgs.port}`));
+
+  const io = new Server(server);
+
+  io.on('connection', async(socket) => {
+    console.log('🟢 Usuario conectado')
+    
+    const productos = await productosDao.getAll();
+  
+    socket.emit('bienvenidoLista', productos )
+    
+    const mensajes = await chat.getAll();
+    socket.emit('listaMensajesBienvenida', mensajes)
+    
+    socket.on('nuevoMensaje', async(data) => {
+      await chat.createMessage(data);
+      
+      const mensajes = await chat.getAll();
+      io.sockets.emit('listaMensajesActualizada', mensajes)
+    })
+  
+    socket.on('productoAgregado', async(data) => {    
+      console.log('Alguien presionó el click')
+      await productosDao.createProduct(data);
+      
+      const productos = await productosDao.getAll();
+      io.sockets.emit('listaActualizada', productos);
+    })
+    
+    socket.on('disconnect', () => {
+      console.log('🔴 Usuario desconectado')
+    })
+  })
+
+  server.on('error', (err) => console.log(err))
+}
+
+if (minimistArgs.mode === "cluster") {
+  if (cluster.isPrimary){
+
+    cpus.map(()=> cluster.fork());
+
+    cluster.on("exit", (worker)=>{
+      console.log(`Worker ${worker.process.pid} died`);
+      cluster.fork()
+    })
+  } else {
+    startServer();
+  }
+} else if (minimistArgs.mode === "fork"){
+  startServer();
+} else {
+  console.log(`${minimistArgs.mode} is not a valid mode. Please choose fork or cluster`)
+  process.exit(1)
+}
+
