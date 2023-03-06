@@ -1,5 +1,6 @@
 import express from "express";
 import session from 'express-session';
+import os from "os";
 import passport from "passport";
 
 const router = express.Router();
@@ -59,6 +60,7 @@ router.get('/info', (_req, res) => {
     let folder = process.cwd();
     let cores = os.cpus().length;
     res.render("pages/info", {args, so, nodeVer, rss, execPath, pId, folder, cores})
-  })
+    console.log({args, so, nodeVer, rss, execPath, pId, folder, cores});
+    })
 
 export default router;
