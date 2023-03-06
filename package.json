@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node ./src/benchmark.js",
     "start": "nodemon --inspect ./src/server.js",
     "rebuildDB": "node ./src/dao/start/RebuildDB.js"
   },
@@ -22,7 +22,9 @@
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
     "@firebase/firestore": "^3.8.1",
+    "autocannon": "^7.10.0",
     "bcrypt": "^5.1.0",
+    "compression": "^1.7.4",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
@@ -32,6 +34,7 @@
     "firebase": "^9.16.0",
     "firebase-admin": "^11.5.0",
     "handlebars": "^4.7.7",
+    "log4js": "^6.8.0",
     "minimist": "^1.2.8",
     "mongoose": "^6.8.4",
     "passport": "^0.6.0",

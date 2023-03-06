@@ -1,0 +1,204 @@
+Statistical profiling result from isolate-000002A0EF157060-3708-v8.log, (2881 ticks, 0 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+   2757   95.7%          C:\WINDOWS\SYSTEM32\ntdll.dll
+    120    4.2%          C:\Program Files\nodejs\node.exe
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      1    0.0%   25.0%  Function: ^processTicksAndRejections node:internal/process/task_queues:68:35     
+      1    0.0%   25.0%  Function: ^listOnTimeout node:internal/timers:507:25
+      1    0.0%   25.0%  Function: ^isWindowsDeviceRoot node:path:60:29
+      1    0.0%   25.0%  Function: ^__awaiter C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express-handlebars\dist\express-handlebars.js:18:54
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+      4    0.1%  100.0%  JavaScript
+      0    0.0%    0.0%  C++
+      4    0.1%  100.0%  GC
+   2877   99.9%          Shared libraries
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+   2757   95.7%  C:\WINDOWS\SYSTEM32\ntdll.dll
+
+    120    4.2%  C:\Program Files\nodejs\node.exe
+     86   71.7%    C:\Program Files\nodejs\node.exe
+     19   22.1%      Function: ^compileFunction node:vm:308:25
+     18   94.7%        Function: ^wrapSafe node:internal/modules/cjs/loader:1011:18
+     18  100.0%          Function: ^Module._compile node:internal/modules/cjs/loader:1053:37
+     18  100.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1108:37     
+      1    5.3%        LazyCompile: ~wrapSafe node:internal/modules/cjs/loader:1011:18
+      1  100.0%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1053:37
+      1  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1108:37  
+     14   16.3%      Function: ^moduleStrategy node:internal/modules/esm/translators:112:56
+     14  100.0%        Function: ^moduleProvider node:internal/modules/esm/loader:346:28
+     14  100.0%          C:\Program Files\nodejs\node.exe
+     11   12.8%      Function: ^stat node:internal/modules/cjs/loader:151:14
+      7   63.6%        Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      4   57.1%          Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      4  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      3   42.9%          Function: ^tryPackage node:internal/modules/cjs/loader:338:20
+      2   66.7%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1   33.3%            LazyCompile: *Module._findPath node:internal/modules/cjs/loader:494:28
+      4   36.4%        Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      4  100.0%          Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35       
+      4  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      3    3.5%      LazyCompile: ~configSecureContext node:internal/tls/secure-context:120:29
+      2   66.7%        LazyCompile: ~createSecureContext node:_tls_common:99:29
+      2  100.0%          LazyCompile: ~connect node:_tls_wrap:1599:35
+      2  100.0%            LazyCompile: ~makeConnection C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\mongodb\lib\cmap\connect.js:256:24
+      1   33.3%        Function: ^createSecureContext node:_tls_common:99:29
+      1  100.0%          Function: ^connect node:_tls_wrap:1599:35
+      1  100.0%            Function: ^makeConnection C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\mongodb\lib\cmap\connect.js:256:24
+      3    3.5%      Function: ^realpathSync node:fs:2426:22
+      3  100.0%        Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+      2   66.7%          Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      2  100.0%            Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      1   33.3%          Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%            Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35     
+      3    3.5%      Function: ^read node:internal/modules/package_json_reader:16:14
+      1   33.3%        LazyCompile: ~readPackage node:internal/modules/cjs/loader:290:21
+      1  100.0%          LazyCompile: ~resolveExports node:internal/modules/cjs/loader:472:24
+      1  100.0%            LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1   33.3%        LazyCompile: *readPackageScope node:internal/modules/cjs/loader:321:26
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1108:37       
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:963:33
+      1   33.3%        Function: ^readPackage node:internal/modules/cjs/loader:290:21
+      1  100.0%          Function: ^readPackageScope node:internal/modules/cjs/loader:321:26
+      1  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1108:37  
+      3    3.5%      C:\Program Files\nodejs\node.exe
+      1   33.3%        LazyCompile: ~isIPv6 node:internal/net:35:16
+      1  100.0%          LazyCompile: ~isIP node:internal/net:39:14
+      1  100.0%            LazyCompile: ~parseSslOptions C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\mongodb\lib\cmap\connect.js:237:25
+      1   33.3%        LazyCompile: ~id C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\handlebars\dist\cjs\handlebars\compiler\helpers.js:44:12
+      1  100.0%          LazyCompile: ~anonymous C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:12:42
+      1  100.0%            Function: ^parse C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:269:30
+      1   33.3%        Function: ^mergeSource C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:267:36
+      1  100.0%          Function: ^createFunctionContext C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:216:56
+      1  100.0%            Function: ^compile C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:73:28
+      2    2.3%      LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27        
+      2  100.0%        Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1   50.0%          Function: ~<anonymous> node:internal/webstreams/readablestream:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27  
+      1   50.0%          Function: ~<anonymous> node:internal/modules/esm/loader:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27  
+      2    2.3%      Function: ^statSync node:fs:1544:18
+      1   50.0%        Function: ^tryStatSync node:internal/modules/esm/resolve:165:3
+      1  100.0%          Function: ^packageResolve node:internal/modules/esm/resolve:854:24
+      1  100.0%            Function: ^moduleResolve node:internal/modules/esm/resolve:942:23
+      1   50.0%        Function: ^tryStat C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express\lib\view.js:174:17
+      1  100.0%          Function: ^resolve C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express\lib\view.js:146:42
+      1  100.0%            Function: ^lookup C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express\lib\view.js:104:40
+      2    2.3%      Function: ^readSync node:fs:685:18
+      2  100.0%        Function: ^tryReadSync node:fs:430:21
+      2  100.0%          Function: ^readFileSync node:fs:451:22
+      2  100.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1108:37     
+      2    2.3%      Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2  100.0%        Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1   50.0%          LazyCompile: ~lazyLoadStreams node:fs:2859:25
+      1  100.0%            LazyCompile: ~get ReadStream node:fs:3002:17
+      1   50.0%          Function: ~<anonymous> node:internal/cluster/primary:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27     
+      1    1.2%      Script: ~<anonymous> file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/node_modules/@faker-js/faker/dist/esm/chunk-PHKD4ARO.mjs:1:1
+      1  100.0%        C:\Program Files\nodejs\node.exe
+      1  100.0%          C:\Program Files\nodejs\node.exe
+      1  100.0%            LazyCompile: ~run node:internal/modules/esm/module_job:193:12
+      1    1.2%      LazyCompile: ~statSync node:fs:1544:18
+      1  100.0%        LazyCompile: ~tryStatSync node:internal/modules/esm/resolve:165:3
+      1  100.0%          LazyCompile: ~packageResolve node:internal/modules/esm/resolve:854:24
+      1  100.0%            LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:942:23
+      1    1.2%      LazyCompile: ~setOption C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\mongodb\lib\connection_string.js:407:19
+      1  100.0%        LazyCompile: ~parseOptions C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\mongodb\lib\connection_string.js:195:22
+      1  100.0%          LazyCompile: ~MongoClient C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\mongodb\lib\mongo_client.js:43:16
+      1  100.0%            LazyCompile: ~<anonymous> C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\mongoose\lib\connection.js:799:31
+      1    1.2%      LazyCompile: ~resolve node:url:699:41
+      1  100.0%        LazyCompile: ~urlResolve node:url:695:20
+      1  100.0%          LazyCompile: ~module.exports.evaluate C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\@mapbox\node-pre-gyp\lib\util\versioning.js:277:35
+      1  100.0%            LazyCompile: ~exports.find C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\@mapbox\node-pre-gyp\lib\pre-binding.js:17:24
+      1    1.2%      LazyCompile: ~processIncomingData C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\mongodb\lib\cmap\message_stream.js:84:29
+      1  100.0%        Function: ^_write C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\mongodb\lib\cmap\message_stream.js:31:11
+      1  100.0%          Function: ^writeOrBuffer node:internal/streams/writable:366:23
+      1  100.0%            Function: ^_write node:internal/streams/writable:284:16
+      1    1.2%      LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:99:28
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:27:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    1.2%      LazyCompile: ~connectionListenerInternal node:_http_server:446:36
+      1  100.0%        Function: ^defaultTriggerAsyncIdScope node:internal/async_hooks:454:36
+      1  100.0%          LazyCompile: ~connectionListener node:_http_server:440:28
+      1  100.0%            Function: ^emit node:events:475:44
+      1    1.2%      LazyCompile: ~afterWriteDispatched node:internal/stream_base_commons:155:30
+      1  100.0%        Function: ^writeGeneric node:internal/stream_base_commons:147:22
+      1  100.0%          LazyCompile: ~Socket._writeGeneric node:net:797:42
+      1  100.0%            Function: ^Socket._write node:net:834:35
+      1    1.2%      Function: ~<anonymous> C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\mongodb-connection-string-url\node_modules\whatwg-url\lib\percent-encoding.js:1:1 
+      1  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1053:37
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1108:37       
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:963:33
+      1    1.2%      Function: ~<anonymous> C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\mongodb-connection-string-url\node_modules\webidl-conversions\lib\index.js:1:1    
+      1  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1053:37
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1108:37       
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:963:33
+      1    1.2%      Function: ~<anonymous> C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\log4js\node_modules\debug\src\node.js:1:1
+      1  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1053:37
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1108:37       
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:963:33
+      1    1.2%      Function: ^update node:internal/crypto/hash:95:40
+      1  100.0%        Function: ^hash C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express-session\index.js:596:14
+      1  100.0%          Function: ^save C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express-session\index.js:403:20
+      1  100.0%            LazyCompile: ~end C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express-session\index.js:250:27
+      1    1.2%      Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%        Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      1  100.0%          Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      1  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1    1.2%      Function: ^shift node:internal/priority_queue:107:8
+      1  100.0%        Function: ^listOnTimeout node:internal/timers:507:25
+      1  100.0%          Function: ^processTimers node:internal/timers:487:25
+      1    1.2%      Function: ^read C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\mongodb\lib\utils.js:839:9
+      1  100.0%        Function: ^processIncomingData C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\mongodb\lib\cmap\message_stream.js:84:29
+      1  100.0%          Function: ^_write C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\mongodb\lib\cmap\message_stream.js:31:11
+      1  100.0%            Function: ^writeOrBuffer node:internal/streams/writable:366:23
+      1    1.2%      Function: ^openSync node:fs:577:18
+      1  100.0%        Function: ^readFileSync node:fs:451:22
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1108:37       
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:963:33
+      1    1.2%      Function: ^handleWriteReq node:internal/stream_base_commons:45:24
+      1  100.0%        Function: ^writeGeneric node:internal/stream_base_commons:147:22
+      1  100.0%          Function: ^Socket._writeGeneric node:net:797:42
+      1  100.0%            Function: ^Socket._write node:net:834:35
+      1    1.2%      Function: ^emit node:events:475:44
+      1  100.0%        LazyCompile: ~error C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\send\index.js:267:45
+      1  100.0%          LazyCompile: ~onStatError C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\send\index.js:412:57
+      1  100.0%            LazyCompile: ~next C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\send\index.js:728:17
+      1    1.2%      Function: ^cpus node:os:133:14
+      1  100.0%        Function: ^<anonymous> file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/user.js:53:21
+      1  100.0%          Function: ^handle C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express\lib\router\layer.js:86:49
+      1  100.0%            LazyCompile: ~next C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express\lib\router\route.js:116:16
+      1    1.2%      Function: ^canBeRequiredByUsers node:internal/bootstrap/loaders:240:30
+      1  100.0%        Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%          Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%            Function: ^Module.require node:internal/modules/cjs/loader:991:36
+      1    1.2%      Function: ^__awaiter C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express-handlebars\dist\express-handlebars.js:18:54
+      1  100.0%        LazyCompile: ~ExpressHandlebars.renderView C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express-handlebars\dist\express-handlebars.js:246:55        
+      1  100.0%          LazyCompile: ~render C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express\lib\view.js:133:40
+      1  100.0%            LazyCompile: ~tryRender C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express\lib\application.js:655:19
+      1    1.2%      Function: ^Hash node:internal/crypto/hash:58:14
+      1  100.0%        Function: ^createHash node:crypto:134:20
+      1  100.0%          LazyCompile: ~hash C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express-session\index.js:596:14
+      1  100.0%            LazyCompile: ~isModified C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express-session\index.js:425:24
+      2    1.7%    Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      2  100.0%      Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      2  100.0%        Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      2  100.0%          Function: ^Module.require node:internal/modules/cjs/loader:991:36
+      2  100.0%            Function: ^require node:internal/modules/cjs/helpers:101:31

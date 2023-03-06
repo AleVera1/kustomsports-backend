@@ -70,3 +70,4 @@
 2023/02/23 19:21:59 [notice] 19540#39100: signal process started
 2023/02/23 19:38:19 [emerg] 38844#29920: CreateFile() "C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\nginx/conf/mine.types" failed (2: The system cannot find the file specified) in C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\nginx/conf/nginx.conf:6
 2023/02/23 19:39:50 [emerg] 16940#6176: "events" directive is duplicate in C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\nginx/conf/nginx.conf:34
+2023/02/23 19:48:11 [emerg] 44908#46012: "events" directive is duplicate in C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\nginx/conf/nginx.conf:34

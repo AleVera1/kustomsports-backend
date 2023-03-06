@@ -21,6 +21,9 @@ import { User } from "./modules/user.modules.js"
 import passport from "passport";
 import parseArgs from "minimist";
 import dotenv from 'dotenv';
+import compression from "compression";
+import logger from "./loggers/Log4jsLogger.js";
+import loggerMiddleware from "./middlewares/routesLogger.middleware.js";
 
 dotenv.config();
 
@@ -69,6 +72,8 @@ passport.deserializeUser((id, done) => {
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(loggerMiddleware);
+app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
@@ -124,7 +129,7 @@ const minimistArgs = parseArgs(args, options);
 const cpus = os.cpus();
 
 const startServer = () => {
-  const expressServer = server.listen(minimistArgs.port, () => console.log(` >>>>> 🚀 Server started at http://localhost:${minimistArgs.port}`));
+  const expressServer = app.listen(minimistArgs.port, () => logger.info(` >>>>> 🚀 Server started at http://localhost:${minimistArgs.port}`));
 
   const io = new Server(server);
 
@@ -158,7 +163,7 @@ const startServer = () => {
     })
   })
 
-  server.on('error', (err) => console.log(err))
+  server.on('error', (err) => logger.log(err))
 }
 
 if (minimistArgs.mode === "cluster") {
