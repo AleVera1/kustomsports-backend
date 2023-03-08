@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "node ./src/benchmark.js",
-    "start": "nodemon --inspect ./src/server.js",
+    "start": "node ./src/server.js",
     "rebuildDB": "node ./src/dao/start/RebuildDB.js"
   },
   "repository": {
