@@ -127,9 +127,10 @@ const options = {
 const minimistArgs = parseArgs(args, options);
 
 const cpus = os.cpus();
+const PORT = process.env.PORT
 
 const startServer = () => {
-  const expressServer = app.listen(minimistArgs.port, () => logger.info(` >>>>> 🚀 Server started at http://localhost:${minimistArgs.port}`));
+  const expressServer = app.listen(PORT, () => logger.info(` >>>>> 🚀 Server started at http://localhost:${PORT}`));
 
   const io = new Server(server);
 
