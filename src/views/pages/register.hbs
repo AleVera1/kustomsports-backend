@@ -3,8 +3,36 @@
   <form class="row g-3" action="/register" method="POST"> 
     <div class="col-sm-3">
       <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="basic-addon1">Usuario</span>
-        <input type="text" name="username" required class="form-control" placeholder="Usuario" aria-label="Usuario" aria-describedby="basic-addon1">
+        <span class="input-group-text" id="basic-addon1">Email</span>
+        <input type="email" name="username" required class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="basic-addon1">Nombre</span>
+        <input type="text" name="name" required class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1">
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="basic-addon1">Direccion</span>
+        <input type="address" name="address" required class="form-control" placeholder="Direccion" aria-label="Direccion" aria-describedby="basic-addon1">
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="basic-addon1">Edad</span>
+        <input type="number" name="age" required class="form-control" placeholder="Edad" aria-label="Edad" aria-describedby="basic-addon1">
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="basic-addon1">Telefono</span>
+        <input type="tel" name="phone" required class="form-control" placeholder="Telefono" aria-label="Telefono" aria-describedby="basic-addon1">
       </div>
     </div>
 
@@ -12,6 +40,13 @@
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="basic-addon2">Contraseña</span>
         <input type="password" name="password" required class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="basic-addon2">Avatar</span>
+        <input type="file" name="avatar" required class="form-control" placeholder="Avatar" aria-label="Avatar" aria-describedby="basic-addon1">
       </div>
     </div>
 
