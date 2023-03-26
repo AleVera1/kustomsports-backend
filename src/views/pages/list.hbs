@@ -23,6 +23,12 @@
           <td>{{this.stock}}</td>
           <td>{{this.code}}</td>
           <td>{{this.description}}</td>
+          <td>
+            <form action="/productos/add" method="post">
+              <input type="hidden" name="prodId" value="{{this._id}}">
+              <input type="submit" value="Agregar al carrito">
+            </form>
+          </td>
       </tr>
     {{/each}}
     </tbody>
@@ -30,3 +36,4 @@
 {{else}}
 <h2>No hay productos en la lista</h2>
 {{/if}}
+

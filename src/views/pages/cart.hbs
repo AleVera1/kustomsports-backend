@@ -1,0 +1,33 @@
+<h2>Carrito de compras</h2>
+{{#if productos.[0]}}
+  <table class="table table-sm table-hover">
+    <caption>Lista de productos en el carrito</caption>
+    <thead>
+      <tr>
+          <th scope="col">#ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each productos}}
+      <tr>
+          <td>{{this._id}}</td>
+          <td>{{this.title}}</td>
+          <td>{{this.price}}</td>
+          <td>{{this.cantidad}}</td>
+          <td>{{this.subtotal}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+  <p>Total: {{total}}</p>
+  <form action="/carrito/comprar" method="post">
+    <button type="submit">Comprar</button>
+  </form>
+{{else}}
+  <p>No hay productos en el carrito</p>
+{{/if}}
+

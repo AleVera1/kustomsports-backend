@@ -1,15 +1,21 @@
 import multer from "multer";
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        const destination = "./src/uploads";
-        cb(null, destination);
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.originalname);
-    },
+  destination: "./src/uploads",
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
 });
 
-const upload = multer({ storage });
+const fileFilter = function (req, file, cb) {
+  if (file.mimetype !== "image/png" && file.mimetype !== "image/jpeg") {
+    return cb(new Error("Solo se permiten archivos de imagen"));
+  }
+  cb(null, true);
+};
 
-export default upload;
+const uploader = multer({ storage: storage, fileFilter: fileFilter }).single(
+  "avatar"
+);
+
+export default uploader;

@@ -4,7 +4,6 @@ import productRouter from './routes/product.js';
 import cartRouter from './routes/cart.js';
 import userRouter from './routes/user.js';
 import otherRouter from './routes/other.js';
-import productRandomRouter from './routes/productRandom.js';
 import { MensajesDao } from './dao/MensajesDao.js';
 import { ProductoDao } from './dao/ProductoDao.js';
 import { ProductMocker } from './mocks/productMocker.js'
@@ -25,7 +24,7 @@ import dotenv from 'dotenv';
 import compression from "compression";
 import logger from "./loggers/Log4jsLogger.js";
 import loggerMiddleware from "./middlewares/routesLogger.middleware.js";
-
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -40,6 +39,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.static('public'));
+
+app.use(cookieParser());
 
 app.use(
   session({
@@ -80,9 +81,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.use('/productos', productRouter);
-app.use('/api/carrito', cartRouter);
+app.use('/cart', cartRouter);
 app.use('/test', otherRouter);
-app.use('/productosRandoms', productRandomRouter);
 app.use('/', userRouter);
 
 app.all("*", (req, res) => {
@@ -99,7 +99,6 @@ app.engine('hbs', engine({
   partialsDir: __dirname + '/views/partials',
   allowProtoPropertiesByDefault: true
 }))
-
 
 const args = process.argv.slice(2);
 const options = {
@@ -121,7 +120,7 @@ const PORT = process.env.PORT
 const startServer = () => {
   const expressServer = app.listen(PORT, () => logger.info(` >>>>> 🚀 Server started at http://localhost:${PORT}`));
 
-  const io = new Server(server);
+  const io = new Server(expressServer);
 
   io.on('connection', async(socket) => {
     console.log('🟢 Usuario conectado')

@@ -2,7 +2,7 @@ import express from "express";
 import session from 'express-session';
 import os from "os";
 import passport from "passport";
-import upload from '../lib/multer.js';
+import uploader from '../lib/multer.js';
 
 const router = express.Router();
 
@@ -42,7 +42,7 @@ router.get('/register', async(req, res) => {
     res.render('pages/register')
 })
 
-router.post('/register', upload.single('avatar'), passport.authenticate("register", {failureRedirect: "/registerError"}), async (req, res) => res.redirect("/"))
+router.post('/register', uploader, passport.authenticate("register", {failureRedirect: "/registerError"}), async (req, res) => res.redirect("/"));
 
 router.get('/registerError', async(req, res) => {
   res.render('pages/registerError')
