@@ -1,82 +1,17 @@
 import express from "express";
 import { CarritoDao } from "../dao/CarritoDao.js";
-import { ProductoDao } from "../dao/ProductoDao.js";
-import nodemailer from "nodemailer";
 
 const router = express.Router();
 const carritoDao = new CarritoDao();
 
-// GET /cart
 router.get('/', async(req, res) => {
-  const cart = await carritoDao.getActualCart(req.session.userId);
-  const products = await carritoDao.getAllProductsFromCart(cart._id);
-  
-  res.render('pages/cart', { status: req.session.login, products });
+  const carrito = await carritoDao.getCart(req.session.cartId);
+  if (!carrito) {
+    return res.render('pages/cart', { status: req.session.login, carrito: null });
+  }
+  res.render('pages/cart', { status: req.session.login, carrito });
 });
 
-
-// POST /cart
-router.post('/', async (_req, res) => {
-  const newCart = await carritoDao.createCart();
-  
-  newCart
-    ? res.status(200).json({"success": "Product added with ID " + newCart._id})
-    : res.status(500).json({"error": "there was an error"})
-  
-})
-
-// DELETE /cart/id
-router.delete('/:id', async(req,res) => {
-  const { id } = req.params;
-  const wasDeleted = await carritoDao.deleteCartById(id);
-  
-  wasDeleted 
-    ? res.status(200).json({"success": "cart successfully removed"})
-    : res.status(404).json({"error": "cart not found"})
-  
-})
-
-// POST /cart/:id/productos
-
-router.post('/:id/productos', async(req,res) => {
-  const { id } = req.params;
-  const { body } = req;
-  
-  const productExists = await ProductoDao.exists(body.productId);
-  
-  if(productExists) {
-    await carritoDao.saveProductToCart(id, body)
-    res.redirect(`/cart/${id}/productos`);
-  } else {
-    res.status(404).json({"error": "product not found"});
-  }
-  
-})
-
-// GET /cart/:id/productos
-router.get('/:id/productos', async(req,res)=>{
-  const { id } = req.params;
-  const cartProducts = await carritoDao.getAllProductsFromCart(id);
-  
-  if(cartProducts) {
-    res.render('cart', {hasAny: true, userCart: cartProducts});
-  } else {
-    res.status(404).json({"error": "cart not found"})
-  }
-})
-
-
-// DELETE /cart/:id/productos/:id_prod
-router.delete('/:id/productos/:id_prod', async(req, res) => {
-  const {id, id_prod } = req.params;
-  
-  const wasDeleted = await carritoDao.deleteProductFromCart(id, id_prod);
-  
-  wasDeleted 
-? res.status(200).json({"success": "that product is no longer in the cart"})
-    : res.status(400).json({"error": "there was some problem"})
-  
-})
 
 // POST /cart/buy
 router.post('/buy', async(req,res) => {
