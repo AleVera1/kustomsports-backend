@@ -34,6 +34,6 @@ const Schema = new mongoose.Schema({
     required: true,
     max: 5000
   }
-})
+}, { strictPopulate: false })
 
 export const ProductosModel = mongoose.model("productos", Schema);

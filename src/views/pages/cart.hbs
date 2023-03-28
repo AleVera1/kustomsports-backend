@@ -17,14 +17,12 @@
           <td>{{this._id}}</td>
           <td>{{this.title}}</td>
           <td>{{this.price}}</td>
-          <td>{{this.cantidad}}</td>
-          <td>{{this.subtotal}}</td>
       </tr>
     {{/each}}
     </tbody>
   </table>
   <p>Total: {{total}}</p>
-  <form action="/carrito/comprar" method="post">
+  <form action="/cart/comprar" method="post">
     <button type="submit">Comprar</button>
   </form>
 {{else}}

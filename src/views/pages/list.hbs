@@ -24,8 +24,8 @@
           <td>{{this.code}}</td>
           <td>{{this.description}}</td>
           <td>
-            <form action="/productos/add" method="post">
-              <input type="hidden" name="prodId" value="{{this._id}}">
+            <form action="/cart/{{this._id}}/productos" method="post">
+              <input type="hidden" name="productId" value="{{this._id}}">
               <input type="submit" value="Agregar al carrito">
             </form>
           </td>
@@ -36,4 +36,5 @@
 {{else}}
 <h2>No hay productos en la lista</h2>
 {{/if}}
+
 
