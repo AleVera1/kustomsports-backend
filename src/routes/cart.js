@@ -8,9 +8,10 @@ const carritoDao = new CarritoDao();
 
 // GET /cart
 router.get('/', async(req, res) => {
-  const cart = await carritoDao.getActualCart(req.session.userId);;
+  const cart = await carritoDao.getActualCart(req.session.userId);
+  const productos = await carritoDao.getAllProductsFromCart(cart._id);
   
-  res.render('pages/cart', { status: req.session.login, cart });
+  res.render('pages/cart', { status: req.session.login, productos });
 });
 
 
