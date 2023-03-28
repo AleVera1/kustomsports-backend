@@ -1,1 +1,312 @@
 [2023-03-05T13:32:27.308] [WARN] default - GET request from /favicon.ico route
+[2023-03-28T18:44:18.036] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:44:25.297] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:44:28.221] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:44:30.726] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:44:39.451] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:44:39.864] [WARN] default - RestException [Error]: Authenticate
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/router.js:66:23) {
+  status: 401,
+  code: 20003,
+  moreInfo: 'https://www.twilio.com/docs/errors/20003',
+  details: undefined
+}
+[2023-03-28T18:48:13.264] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:48:35.619] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:48:54.447] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:48:55.699] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:49:52.039] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:49:53.675] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:50:10.113] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:51:19.756] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:51:21.223] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:51:45.606] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:51:45.690] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:51:45.781] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:51:47.663] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:53:50.561] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:53:55.694] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:54:35.900] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:55:08.376] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:55:26.801] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:55:41.767] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:55:50.025] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:56:15.864] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:56:17.557] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:58:15.627] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:58:22.170] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:58:23.960] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:58:28.140] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T18:58:28.604] [WARN] default - RestException [Error]: Authenticate
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/router.js:70:23) {
+  status: 401,
+  code: 20003,
+  moreInfo: 'https://www.twilio.com/docs/errors/20003',
+  details: undefined
+}
+[2023-03-28T19:02:52.825] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:02:54.289] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:02:56.129] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:02:58.354] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:02:58.847] [WARN] default - RestException [Error]: Authenticate
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/router.js:70:23) {
+  status: 401,
+  code: 20003,
+  moreInfo: 'https://www.twilio.com/docs/errors/20003',
+  details: undefined
+}
+[2023-03-28T19:08:12.715] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:08:12.839] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:08:18.177] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:08:20.030] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:10:43.277] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:10:44.803] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:10:49.269] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:10:52.481] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:10:52.687] [WARN] default - RestException [Error]: Authenticate
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/router.js:70:23) {
+  status: 401,
+  code: 20003,
+  moreInfo: 'https://www.twilio.com/docs/errors/20003',
+  details: undefined
+}
+[2023-03-28T19:11:37.672] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:11:38.721] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:12:18.061] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:12:20.440] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:12:22.010] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:12:51.786] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:13:13.234] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:13:16.090] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:13:20.062] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-03-28T19:13:21.595] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-03-28T19:13:21.876] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:13:39.815] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-03-28T19:13:39.851] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:16:15.911] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:16:26.275] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:16:28.144] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:16:29.356] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-03-28T19:16:34.560] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-03-28T19:16:34.849] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:18:17.323] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:18:18.789] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:18:57.323] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:19:03.399] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:19:04.453] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:19:14.466] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:19:19.383] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:20:17.453] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:20:17.543] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:20:17.636] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:20:19.163] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:20:20.847] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:21:18.949] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:21:20.695] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:21:22.295] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:24:29.097] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:24:30.665] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:24:41.248] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:24:42.572] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:32:46.617] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:32:51.610] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:32:53.622] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:33:33.005] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-03-28T19:35:23.644] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-03-28T19:35:23.694] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:35:26.530] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-03-28T19:35:26.565] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:36:49.978] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-03-28T19:36:50.016] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:36:54.074] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-03-28T19:36:54.089] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:51:36.993] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:51:42.152] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:51:44.539] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:53:45.266] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:53:49.037] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:53:55.120] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:54:06.817] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:55:55.421] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:55:58.617] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:56:44.819] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:57:14.090] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:57:15.624] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T19:57:29.564] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:01:45.337] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:01:45.468] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:01:50.541] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:01:53.005] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:01:58.851] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:01:59.851] [WARN] default - GET request from /urlProducto1.com route
+[2023-03-28T20:01:59.858] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:02:13.711] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:02:14.275] [WARN] default - RestException [Error]: The 'To' number 5491124016527 is not a valid phone number.
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/router.js:70:23) {
+  status: 400,
+  code: 21211,
+  moreInfo: 'https://www.twilio.com/docs/errors/21211',
+  details: undefined
+}
+[2023-03-28T20:02:26.119] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:02:27.398] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:02:28.318] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:03:13.607] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:03:16.210] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:03:18.273] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:03:20.844] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:03:22.091] [WARN] default - GET request from /urlProducto1.com route
+[2023-03-28T20:03:22.357] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:03:24.977] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:03:26.407] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:03:29.518] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:03:47.989] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:03:51.149] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:03:52.368] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:03:54.521] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:04:10.082] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:04:11.671] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:04:29.144] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:04:35.130] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:04:37.372] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:04:42.078] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:04:44.043] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:04:45.837] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:04:46.750] [WARN] default - GET request from /urlProducto1.com route
+[2023-03-28T20:04:46.796] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:04:49.466] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:04:49.980] [WARN] default - RestException [Error]: The 'To' number 541124016527 is not a valid phone number.
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/router.js:70:23) {
+  status: 400,
+  code: 21211,
+  moreInfo: 'https://www.twilio.com/docs/errors/21211',
+  details: undefined
+}
+[2023-03-28T20:05:12.244] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:05:15.217] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:05:16.562] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:05:39.926] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:05:41.166] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:05:47.337] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:05:48.132] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:06:02.173] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:06:06.516] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:06:07.895] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:06:09.133] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:06:09.967] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:06:11.639] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:06:12.535] [WARN] default - GET request from /urlProducto1.com route
+[2023-03-28T20:06:12.543] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:06:14.170] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:06:14.691] [WARN] default - RestException [Error]: The 'To' number 1124016527 is not a valid phone number.
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/router.js:70:23) {
+  status: 400,
+  code: 21211,
+  moreInfo: 'https://www.twilio.com/docs/errors/21211',
+  details: undefined
+}
+[2023-03-28T20:12:08.105] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:12:11.012] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:12:13.926] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:12:15.338] [WARN] default - GET request from /urlProducto1.com route
+[2023-03-28T20:12:15.624] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:12:17.395] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:12:17.938] [WARN] default - RestException [Error]: The 'To' number 1124016527 is not a valid phone number.
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/router.js:70:23) {
+  status: 400,
+  code: 21211,
+  moreInfo: 'https://www.twilio.com/docs/errors/21211',
+  details: undefined
+}
+[2023-03-28T20:12:58.014] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:12:59.861] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:13:01.926] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:13:03.975] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:13:04.885] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:13:05.138] [WARN] default - GET request from /urlProducto1.com route
+[2023-03-28T20:13:06.418] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:13:06.977] [WARN] default - RestException [Error]: The 'To' number 1124017076 is not a valid phone number.
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/router.js:70:23) {
+  status: 400,
+  code: 21211,
+  moreInfo: 'https://www.twilio.com/docs/errors/21211',
+  details: undefined
+}
+[2023-03-28T20:13:30.301] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:13:34.064] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:13:36.910] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:13:38.594] [WARN] default - GET request from /urlProducto1.com route
+[2023-03-28T20:13:38.859] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:13:40.472] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:13:40.990] [WARN] default - RestException [Error]: The 'To' number 5491124016527 is not a valid phone number.
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/router.js:70:23) {
+  status: 400,
+  code: 21211,
+  moreInfo: 'https://www.twilio.com/docs/errors/21211',
+  details: undefined
+}
+[2023-03-28T20:14:58.271] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:14:58.368] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:14:58.457] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:15:03.671] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:15:05.822] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:15:07.018] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:15:08.734] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:15:10.242] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:15:10.248] [WARN] default - GET request from /urlProducto1.com route
+[2023-03-28T20:15:36.958] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:15:37.471] [WARN] default - RestException [Error]: The 'To' number 1124016527 is not a valid phone number.
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/router.js:70:23) {
+  status: 400,
+  code: 21211,
+  moreInfo: 'https://www.twilio.com/docs/errors/21211',
+  details: undefined
+}
+[2023-03-28T20:15:47.440] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:15:47.531] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:15:47.618] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:15:49.094] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:15:50.713] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:16:10.928] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:16:16.247] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:16:17.681] [WARN] default - GET request from /urlProducto1.com route
+[2023-03-28T20:16:17.691] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:16:19.671] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:16:20.176] [WARN] default - RestException [Error]: The 'To' number 1124016527 is not a valid phone number.
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/router.js:70:23) {
+  status: 400,
+  code: 21211,
+  moreInfo: 'https://www.twilio.com/docs/errors/21211',
+  details: undefined
+}
+[2023-03-28T20:16:24.551] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:16:25.661] [WARN] default - GET request from /urlProducto1.com route
+[2023-03-28T20:16:25.670] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:16:27.697] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:16:31.944] [WARN] default - GET request from /assets/favicon.ico route
+[2023-03-28T20:16:35.056] [WARN] default - GET request from /assets/favicon.ico route

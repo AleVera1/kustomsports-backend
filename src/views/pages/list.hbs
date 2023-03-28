@@ -24,9 +24,9 @@
           <td>{{this.code}}</td>
           <td>{{this.description}}</td>
           <td>
-            <form action="/cart/{{this._id}}/productos" method="post">
-              <input type="hidden" name="productId" value="{{this._id}}">
-              <input type="submit" value="Agregar al carrito">
+            <form action="/add" method="post">
+                <input type="hidden" value="{{this.title}}" name="prodName"/>
+                <input type="submit" name="" id="" value="Add to cart">
             </form>
           </td>
       </tr>

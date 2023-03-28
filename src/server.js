@@ -4,6 +4,7 @@ import productRouter from './routes/product.js';
 import cartRouter from './routes/cart.js';
 import userRouter from './routes/user.js';
 import otherRouter from './routes/other.js';
+import generalRouter from './routes/router.js';
 import { MensajesDao } from './dao/MensajesDao.js';
 import { ProductoDao } from './dao/ProductoDao.js';
 import { ProductMocker } from './mocks/productMocker.js'
@@ -80,10 +81,10 @@ app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.use('/productos', productRouter);
+/* app.use('/productos', productRouter);
 app.use('/cart', cartRouter);
-app.use('/test', otherRouter);
-app.use('/', userRouter);
+app.use('/test', otherRouter); */
+app.use('/', generalRouter);
 
 app.all("*", (req, res) => {
   res.status(404).json({"error": "ruta no existente"})

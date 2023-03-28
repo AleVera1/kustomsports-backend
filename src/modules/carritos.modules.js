@@ -5,12 +5,8 @@ const Schema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  products: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'products'
-    }
-  ]
+  username: { type: String, require: true},
+  products: {type: Array, require: true}
 });
 
 export const CarritosModel = mongoose.model("carritos", Schema);

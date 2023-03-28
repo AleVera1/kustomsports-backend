@@ -12,7 +12,7 @@ export class CarritoDao {
   }
 
   async getActualCart(userId) {
-    const cart = await CarritosModel.findOne({ userId, finalizado: false }).populate('productos');
+    const cart = await CarritosModel.findOne({ userId, finalizado: false }).populate('products');
     if (!cart) {
       return await this.createCart();
     }
@@ -44,7 +44,7 @@ export class CarritoDao {
   }
 
   async getAllProductsFromCart(cartId) {
-    const cart = await CarritosModel.findById(cartId).populate('productos');
+    const cart = await CarritosModel.findById(cartId).populate('products');
     if (!cart) {
       return null;
     }
@@ -52,7 +52,7 @@ export class CarritoDao {
   }
 
   async deleteProductFromCart(cartId, productId) {
-    const cart = await CarritosModel.findById(cartId).populate('productos');
+    const cart = await CarritosModel.findById(cartId).populate('products');
     if (!cart) {
       return false;
     }
