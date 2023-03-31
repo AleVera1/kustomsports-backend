@@ -2,6 +2,7 @@ import express from "express";
 import session from 'express-session';
 import os from "os";
 import passport from "passport";
+import uploader from '../lib/multer.js';
 
 const router = express.Router();
 
@@ -14,16 +15,17 @@ router.get('/login', async(req, res) => {
     
 })
 
+
 router.post('/login', passport.authenticate("login", { failureRedirect: "/loginError" }), async(req, res) => {
-    const {username, password} = req.body;
-    req.session.username = username;
-    req.session.login = true;
-    console.log('Login successful');
-    res.redirect("/");
+  const {username, password} = req.body;
+  req.session.username = username;
+  req.session.login = true;
+  console.log('Login successful');
+  res.redirect("/");
 })
 
 router.get('/', async(req, res) => {
-    res.render('pages/form', {status: req.session.login, username: req.session.username})
+    res.render('pages/form', {status: req.session.login, username: req.session.username, avatar: req.body.avatar})
 })
 
 router.get('/logout', async(req, res) => {
@@ -40,7 +42,7 @@ router.get('/register', async(req, res) => {
     res.render('pages/register')
 })
 
-router.post('/register', passport.authenticate("register", {failureRedirect: "/registerError"}), async (req, res) => res.redirect("/"))
+router.post('/register', uploader, passport.authenticate("register", {failureRedirect: "/registerError"}), async (req, res) => res.redirect("/"));
 
 router.get('/registerError', async(req, res) => {
   res.render('pages/registerError')

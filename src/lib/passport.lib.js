@@ -52,6 +52,11 @@ const registerStrategy = new LocalStrategy(
       const newUser = {
         username,
         password: hashingPasword(password),
+        name: req.body.name,
+        address: req.body.address,
+        age: req.body.age,
+        phone: req.body.phone,
+        avatar: req.body.avatar
       };
       const createUser = await User.create(newUser);
 

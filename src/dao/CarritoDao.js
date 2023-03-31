@@ -1,62 +1,79 @@
-import "../config/db.js";
-import { CarritosModel } from '../modules/carritos.modules.js';
+import { CarritosModel } from "../modules/carritos.modules.js";
+import { ProductosModel } from "../modules/productos.modules.js";
+import mongoose from "mongoose";
+
+mongoose.model('productos', ProductosModel.schema);
 
 export class CarritoDao {
-
-  ID_FIELD = "_id";
-  
   async createCart() {
-    try {
-      return await CarritosModel.create({});
-    } catch (error) {
-      console.log(error);
+    const cart = new CarritosModel();
+    await cart.save();
+    return cart;
+  }
+
+  async getActualCart(userId) {
+    const cart = await CarritosModel.findOne({ userId, finalizado: false }).populate('products');
+    if (!cart) {
+      return await this.createCart();
+    }
+    return cart;
+  }
+
+  async saveProductToCart(cartId, { productId, cantidad }) {
+    const cart = await CarritosModel.findById(cartId);
+    if (!cart) {
       return false;
     }
-  }
-  
-  async deleteCartById(id) {
-    try {
-      return await CarritosModel.findByIdAndDelete({[this.ID_FIELD]: id})
-    } catch (error) {
-        console.log(error);
-        return false;
-      }
-  }
-  
-  async saveProductToCart(id, obj) {
-    try {
-      const cart = await CarritosModel.findById(id)
-      cart.products.push(obj.productId);
-      cart.save();
 
-      return true;
-
-    } catch (error) {
-      console.log(error);
+    const producto = await ProductosModel.findById(productId);
+    if (!producto) {
       return false;
     }
+
+    const index = cart.productos.findIndex((p) => p._id.equals(producto._id));
+
+    if (index === -1) {
+      cart.productos.push(producto);
+    } else {
+      cart.productos[index].stock -= cantidad;
+      cart.productos[index].save();
+    }
+
+    await cart.save();
+    return true;
   }
-  
-  async deleteProductFromCart(id, productId) {
-    try {
-      const cart = await CarritosModel.findById(id);
-      cart.products.remove(productId);
-      cart.save();
 
-      return true;
+  async getAllProductsFromCart(cartId) {
+    const cart = await CarritosModel.findById(cartId).populate('products');
+    if (!cart) {
+      return null;
+    }
+    return cart.productos;
+  }
 
-    } catch (error) {
-      console.log(error);
+  async deleteProductFromCart(cartId, productId) {
+    const cart = await CarritosModel.findById(cartId).populate('products');
+    if (!cart) {
       return false;
     }
-  }
-  
-  async getAllProductsFromCart(id) {
-    try {
-      return await CarritosModel.findById(id).populate('products').select({products: 1, _id:0});
-    } catch (error) {
-      console.log(error);
+
+    const index = cart.productos.findIndex((p) => p._id.equals(productId));
+    if (index === -1) {
       return false;
     }
+
+    const removedProduct = cart.productos.splice(index, 1)[0];
+    removedProduct.stock += 1;
+    removedProduct.save();
+    await cart.save();
+    return true;
+  }
+
+  async deleteCartById(cartId) {
+    const cart = await CarritosModel.findByIdAndDelete(cartId);
+    if (!cart) {
+      return false;
+    }
+    return true;
   }
 }

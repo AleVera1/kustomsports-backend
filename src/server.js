@@ -4,6 +4,7 @@ import productRouter from './routes/product.js';
 import cartRouter from './routes/cart.js';
 import userRouter from './routes/user.js';
 import otherRouter from './routes/other.js';
+import generalRouter from './routes/router.js';
 import { MensajesDao } from './dao/MensajesDao.js';
 import { ProductoDao } from './dao/ProductoDao.js';
 import { ProductMocker } from './mocks/productMocker.js'
@@ -24,6 +25,7 @@ import dotenv from 'dotenv';
 import compression from "compression";
 import logger from "./loggers/Log4jsLogger.js";
 import loggerMiddleware from "./middlewares/routesLogger.middleware.js";
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -38,6 +40,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.static('public'));
+
+app.use(cookieParser());
 
 app.use(
   session({
@@ -77,10 +81,14 @@ app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.use('/api/productos', productRouter);
-app.use('/api/carrito', cartRouter);
-app.use('/test', otherRouter);
-app.use('/', userRouter);
+/* app.use('/productos', productRouter);
+app.use('/cart', cartRouter);
+app.use('/test', otherRouter); */
+app.use('/', generalRouter);
+
+app.all("*", (req, res) => {
+  res.status(404).json({"error": "ruta no existente"})
+});
 
 app.set('views', './src/views');
 app.set('view engine', 'hbs');
@@ -92,25 +100,6 @@ app.engine('hbs', engine({
   partialsDir: __dirname + '/views/partials',
   allowProtoPropertiesByDefault: true
 }))
-
-
-app.get('/productos', async(req, res) => {
-  const productos = await productosDao.getAll();
-  res.render('pages/list', {productos})
-})
-
-app.get('/productosRandoms', async(req, res) => {
-  const productMocker = new ProductMocker(5);
-  const productosRandom = productMocker.generateRandomProducts();
-  res.render('pages/randomList', {productosRandom})
-})
-
-app.post('/productos', async(req,res) => {
-  const {body} = req;
-  await productosDao.createProduct(body);
-  res.redirect('/');
-  return;
-})
 
 const args = process.argv.slice(2);
 const options = {
@@ -132,7 +121,7 @@ const PORT = process.env.PORT
 const startServer = () => {
   const expressServer = app.listen(PORT, () => logger.info(` >>>>> 🚀 Server started at http://localhost:${PORT}`));
 
-  const io = new Server(server);
+  const io = new Server(expressServer);
 
   io.on('connection', async(socket) => {
     console.log('🟢 Usuario conectado')

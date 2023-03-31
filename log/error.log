@@ -1,0 +1,93 @@
+[2023-03-22T19:36:40.578] [ERROR] default - ReferenceError: UsuariosModel is not defined
+    at UsuarioDao.loginUser (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/dao/UsuarioDao.js:21:26)
+    at file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/user.js:22:36
+    at Layer.handle [as handle_request] (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express\lib\router\route.js:144:13)
+    at complete (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\middleware\authenticate.js:271:13)
+    at C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\middleware\authenticate.js:278:15
+    at pass (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\authenticator.js:428:14)
+    at Authenticator.transformAuthInfo (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\authenticator.js:450:5)
+    at C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\middleware\authenticate.js:275:22
+    at C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\http\request.js:41:7
+[2023-03-22T19:37:34.697] [ERROR] default - ReferenceError: UsuariosModel is not defined
+    at UsuarioDao.loginUser (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/dao/UsuarioDao.js:21:26)
+    at file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/user.js:22:36
+    at Layer.handle [as handle_request] (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express\lib\router\route.js:144:13)
+    at complete (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\middleware\authenticate.js:271:13)
+    at C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\middleware\authenticate.js:278:15
+    at pass (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\authenticator.js:428:14)
+    at Authenticator.transformAuthInfo (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\authenticator.js:450:5)
+    at C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\middleware\authenticate.js:275:22
+    at C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\http\request.js:41:7
+[2023-03-22T19:38:15.364] [ERROR] default - ReferenceError: UsuariosModel is not defined
+    at UsuarioDao.loginUser (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/dao/UsuarioDao.js:21:26)
+    at file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/user.js:22:36
+    at Layer.handle [as handle_request] (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express\lib\router\route.js:144:13)
+    at complete (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\middleware\authenticate.js:271:13)
+    at C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\middleware\authenticate.js:278:15
+    at pass (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\authenticator.js:428:14)
+    at Authenticator.transformAuthInfo (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\authenticator.js:450:5)
+    at C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\middleware\authenticate.js:275:22
+    at C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\http\request.js:41:7
+[2023-03-22T19:38:15.413] [ERROR] default - ReferenceError: UsuariosModel is not defined
+    at UsuarioDao.loginUser (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/dao/UsuarioDao.js:21:26)
+    at file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/user.js:22:36
+    at Layer.handle [as handle_request] (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\express\lib\router\route.js:144:13)
+    at complete (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\middleware\authenticate.js:271:13)
+    at C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\middleware\authenticate.js:278:15
+    at pass (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\authenticator.js:428:14)
+    at Authenticator.transformAuthInfo (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\authenticator.js:450:5)
+    at C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\middleware\authenticate.js:275:22
+    at C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\passport\lib\http\request.js:41:7
+[2023-03-22T19:38:32.181] [ERROR] default - TypeError: user.comparePassword is not a function
+    at UsuarioDao.loginUser (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/dao/UsuarioDao.js:30:31)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/user.js:22:22
+[2023-03-22T19:40:49.895] [ERROR] default - TypeError: user.comparePassword is not a function
+    at UsuarioDao.loginUser (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/dao/UsuarioDao.js:30:31)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/user.js:22:22
+[2023-03-22T19:40:49.988] [ERROR] default - TypeError: user.comparePassword is not a function
+    at UsuarioDao.loginUser (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/dao/UsuarioDao.js:30:31)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/routes/user.js:22:22
+[2023-03-28T18:44:30.448] [ERROR] default - CastError: Cast to ObjectId failed for value "Producto 1" (type string) at path "products" because of "BSONTypeError"
+[2023-03-28T18:48:15.289] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T18:48:18.447] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T18:48:24.139] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T18:48:45.186] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T18:48:59.675] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T18:48:59.747] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T18:49:50.445] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T18:50:15.928] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T18:51:18.583] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T18:51:22.023] [ERROR] default - CastError: Cast to ObjectId failed for value "npm start" (type string) at path "products" because of "BSONTypeError"
+[2023-03-28T18:53:53.301] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T18:53:56.802] [ERROR] default - CastError: Cast to ObjectId failed for value "npm start" (type string) at path "products" because of "BSONTypeError"
+[2023-03-28T18:53:57.202] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T18:54:32.113] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'username')
+[2023-03-28T18:56:18.859] [ERROR] default - CastError: Cast to ObjectId failed for value "npm start" (type string) at path "products" because of "BSONTypeError"
+[2023-03-28T18:56:19.243] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T18:58:23.430] [ERROR] default - CastError: Cast to ObjectId failed for value "npm start" (type string) at path "products" because of "BSONTypeError"
+[2023-03-28T19:02:55.509] [ERROR] default - CastError: Cast to ObjectId failed for value "npm start" (type string) at path "products" because of "BSONTypeError"
+[2023-03-28T19:08:30.917] [ERROR] default - TypeError: Cannot read properties of null (reading 'price')
+[2023-03-28T19:33:09.023] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T19:33:09.115] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T19:33:36.170] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T19:34:58.245] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T19:35:21.602] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T19:35:29.355] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T19:36:40.681] [ERROR] default - TypeError: Cannot read properties of null (reading 'productos')
+[2023-03-28T19:37:29.638] [ERROR] default - TypeError: Cannot read properties of null (reading 'productos')
+[2023-03-28T19:37:42.684] [ERROR] default - TypeError: Cannot read properties of null (reading 'productos')
+[2023-03-28T19:38:06.620] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T19:52:12.493] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T19:53:46.925] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T19:53:56.239] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T19:55:56.959] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-03-28T19:55:59.724] [ERROR] default - Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+[2023-03-28T19:56:47.554] [ERROR] default - Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+[2023-03-28T19:57:52.397] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
