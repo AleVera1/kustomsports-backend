@@ -310,3 +310,56 @@
 [2023-03-28T20:16:27.697] [WARN] default - GET request from /assets/favicon.ico route
 [2023-03-28T20:16:31.944] [WARN] default - GET request from /assets/favicon.ico route
 [2023-03-28T20:16:35.056] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:23:11.085] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:23:11.146] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:23:16.778] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:23:25.001] [WARN] default - GET request from /urlProducto1.com route
+[2023-04-01T16:23:25.006] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:23:26.107] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:23:27.510] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:24:48.588] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:24:51.300] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:24:54.242] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:24:54.244] [WARN] default - GET request from /urlProducto1.com route
+[2023-04-01T16:24:54.467] [WARN] default - GET request from /urlProducto2.com route
+[2023-04-01T16:24:56.520] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:24:57.542] [WARN] default - RestException [Error]: Authenticate
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/services/services.js:59:23) {
+  status: 401,
+  code: 20003,
+  moreInfo: 'https://www.twilio.com/docs/errors/20003',
+  details: undefined
+}
+[2023-04-01T16:26:06.928] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:26:07.011] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:26:07.092] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:26:08.304] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:26:11.406] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:26:15.693] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:27:15.428] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:27:37.204] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:27:42.200] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:27:52.315] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:27:55.636] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:29:50.503] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:34:02.497] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:34:08.702] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:34:19.871] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:34:22.109] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-04-01T16:34:23.055] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-04-01T16:34:23.071] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:35:21.475] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:35:21.566] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:35:24.186] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:35:32.403] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:35:35.630] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:37:52.285] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:37:53.538] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:38:03.841] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:38:06.324] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-04-01T16:38:07.040] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-04-01T16:38:07.052] [WARN] default - GET request from /assets/favicon.ico route
+[2023-04-01T16:38:42.971] [WARN] default - GET request from /favicon.ico route
+[2023-04-02T15:21:45.719] [WARN] default - GET request from /favicon.ico route

@@ -1,5 +1,9 @@
 import { createTransport } from "nodemailer";
 import logger from "../loggers/Log4jsLogger.js"
+import twilio from "twilio";
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const sendMail = async (req, type = "newUser", subject = "Nuevo usuario registrado", items) => {
   const transporter = createTransport({
@@ -38,4 +42,23 @@ const sendMail = async (req, type = "newUser", subject = "Nuevo usuario registra
     }
 }
 
-export default sendMail;
+const sendSMS = async (req, message) => {
+  const accountSid = process.env.TWILIOSSID;
+  const authToken = process.env.TWILIOAUTH;
+  
+  const client = twilio(accountSid, authToken);
+
+  const options = {
+      body: message,
+      from: "+14406888709",
+      to: req.user.phone,
+    };
+    
+    try {
+      const message = await client.messages.create(options);
+    } catch (err) {
+      logger.warn(err);
+    } 
+};
+
+export { sendMail, sendSMS};
