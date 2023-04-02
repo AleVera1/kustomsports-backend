@@ -10,8 +10,8 @@ const sendMail = async (req, type = "newUser", subject = "Nuevo usuario registra
     host: 'smtp.ethereal.email',
     port: 587,
     auth: {
-        user: 'cornell52@ethereal.email',
-        pass: 'tm9KvstEd2AVZraH1N'
+        user: 'vicente7@ethereal.email',
+        pass: 'gs1yRQqhyNqAEAjwHP'
     }
   });
 

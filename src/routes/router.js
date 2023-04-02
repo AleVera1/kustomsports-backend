@@ -1,6 +1,5 @@
 import { Router } from "express";
 import passport from "passport";
-import { sendMail } from "../services/services.js";
 import { getMainPage, getLogin, postLogin, getLogout, getRegister, postRegister, getRegisterError, getLoginError, getSpecs, getProduct, postProducts, postAdd, getCart, postCartBuy, unknownRoute} from "../controllers/controller.js"
 import uploader from "../services/multer.js"
 
@@ -16,10 +15,7 @@ router.get('/logout', getLogout)
 
 router.get('/register', getRegister)
 
-router.post('/register', uploader, passport.authenticate("register", {failureRedirect: "/registerError"}), async (req, res) => {
-  sendMail(req)
-  res.redirect("/login")
-});
+router.post('/register', uploader, passport.authenticate("register", {failureRedirect: "/registerError"}), postRegister);
 
 router.get('/registerError', getRegisterError)
 
