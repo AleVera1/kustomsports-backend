@@ -1,13 +1,8 @@
 import express from 'express';
 import { engine } from 'express-handlebars';
-import productRouter from './routes/product.js'; 
-import cartRouter from './routes/cart.js';
-import userRouter from './routes/user.js';
-import otherRouter from './routes/other.js';
 import generalRouter from './routes/router.js';
 import { MensajesDao } from './dao/MensajesDao.js';
 import { ProductoDao } from './dao/ProductoDao.js';
-import { ProductMocker } from './mocks/productMocker.js'
 import http from 'http'; 
 import { fileURLToPath } from "url";
 import { dirname } from "path";
