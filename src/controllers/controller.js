@@ -1,5 +1,5 @@
 import { sendMail, sendSMS } from "../services/services.js";
-import { getProducts, createProducts, getDetailedCart, clearCart, addToCart } from "../persistances/persistance_ecommerce.js"
+import { getProducts, createProducts, getAllCart, clearAllCart, addAProductToCart } from "../persistances/persistance_ecommerce.js"
 import os from "os";
 import logger from "../loggers/Log4jsLogger.js";
 
@@ -83,7 +83,7 @@ const postAdd = async (req, res) => {
   const user = req.user.username;
   logger.info(`${name} added to cart by user ${user}!`);
   try {
-    addToCart(user, name);
+    addAProductToCart(user, name);
     res.redirect('/cart');
   } catch (err) {
     logger.error(`${err}`);
@@ -93,7 +93,7 @@ const postAdd = async (req, res) => {
 
 const getCart = async (req, res) => {
   try{
-    const userCart = await getDetailedCart(req);
+    const userCart = await getAllCart(req);
     console.log(userCart);
     res.render("pages/cart", {status: req.session.login, username: req.session.username, avatar: req.body.avatar, userCart, hasAny:true})
   } catch (err){
@@ -102,11 +102,11 @@ const getCart = async (req, res) => {
 }
 
 const postCartBuy = async (req, res) => {
-  const userCart = await getDetailedCart(req);
+  const userCart = await getAllCart(req);
   const userCartText = JSON.stringify(userCart);
   sendMail(req, "purchase", "New purchase", userCartText);
   sendSMS(req, "Order recieved and in process");
-  clearCart(req);
+  clearAllCart(req);
   res.redirect("/");
 }
 
