@@ -91,3 +91,8 @@
 [2023-03-28T19:55:59.724] [ERROR] default - Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
 [2023-03-28T19:56:47.554] [ERROR] default - Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
 [2023-03-28T19:57:52.397] [ERROR] default - TypeError: Cannot read properties of null (reading 'products')
+[2023-04-08T15:09:21.888] [ERROR] default - TypeError: carritosDao.addToCart is not a function
+[2023-04-08T15:14:05.857] [ERROR] default - TypeError: carritosDao.getDetailedCart is not a function
+[2023-04-08T15:18:12.359] [ERROR] default - TypeError: carritosDao.addToCart is not a function
+[2023-04-08T15:26:37.350] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'user')
+[2023-04-08T15:26:55.607] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'user')
