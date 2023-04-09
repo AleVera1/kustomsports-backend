@@ -1,5 +1,5 @@
 import { sendMail, sendSMS } from "../services/services.js";
-import { getProducts, createProducts, getAllCart, clearAllCart, addAProductToCart } from "../persistances/persistance_ecommerce.js"
+import EcommerceFactory from "../persistances/factory_ecommerce.js"
 import os from "os";
 import logger from "../loggers/Log4jsLogger.js";
 
@@ -68,13 +68,16 @@ const getSpecs = (_req, res) => {
 }
 
 const getProduct = async (req, res) => {
-  const productos = await getProducts();
-  res.render('pages/list', {status: req.session.login, username: req.session.username, avatar: req.body.avatar, productos});
+  const productos = EcommerceFactory.createDAO("mongo");
+  const prods = await productos.getProducts();
+
+  res.render('pages/list', {status: req.session.login, username: req.session.username, avatar: req.body.avatar, productos: prods});
 }
 
 const postProducts = async (req, res) => {
   const { body } = req;
-  await createProducts(body)
+  const createAProduct = EcommerceFactory.createDAO("mongo")
+  await createAProduct.createProduct(body)
   res.redirect('/');
 }
 
@@ -83,7 +86,8 @@ const postAdd = async (req, res) => {
   const user = req.user.username;
   logger.info(`${name} added to cart by user ${user}!`);
   try {
-    addAProductToCart(user, name);
+    const carrito = EcommerceFactory.createDAO("mongo")
+    await carrito.addToCart(user, name);
     res.redirect('/cart');
   } catch (err) {
     logger.error(`${err}`);
@@ -93,7 +97,8 @@ const postAdd = async (req, res) => {
 
 const getCart = async (req, res) => {
   try{
-    const userCart = await getAllCart(req);
+    const carrito = EcommerceFactory.createDAO("mongo")
+    const userCart = await carrito.getDetailedCart(req);
     console.log(userCart);
     res.render("pages/cart", {status: req.session.login, username: req.session.username, avatar: req.body.avatar, userCart, hasAny:true})
   } catch (err){
@@ -102,11 +107,12 @@ const getCart = async (req, res) => {
 }
 
 const postCartBuy = async (req, res) => {
-  const userCart = await getAllCart(req);
+  const carrito = EcommerceFactory.createDAO("mongo")
+  const userCart = await carrito.getDetailedCart(req);
   const userCartText = JSON.stringify(userCart);
   sendMail(req, "purchase", "New purchase", userCartText);
   sendSMS(req, "Order recieved and in process");
-  clearAllCart(req);
+  carrito.clearCart(req);
   res.redirect("/");
 }
 

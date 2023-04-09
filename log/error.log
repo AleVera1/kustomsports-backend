@@ -96,3 +96,4 @@
 [2023-04-08T15:18:12.359] [ERROR] default - TypeError: carritosDao.addToCart is not a function
 [2023-04-08T15:26:37.350] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'user')
 [2023-04-08T15:26:55.607] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'user')
+[2023-04-09T15:14:17.316] [ERROR] default - TypeError: EcommerceFactory.createDao is not a function
