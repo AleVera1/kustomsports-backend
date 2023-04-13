@@ -397,3 +397,40 @@
   moreInfo: 'https://www.twilio.com/docs/errors/20003',
   details: undefined
 }
+[2023-04-12T18:19:34.551] [WARN] default - GET request from /favicon.ico route
+[2023-04-12T18:20:24.336] [WARN] default - GET request from /urlProducto2.com route
+[2023-04-12T18:20:26.871] [WARN] default - RestException [Error]: Authenticate
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/services/services.js:58:23) {
+  status: 401,
+  code: 20003,
+  moreInfo: 'https://www.twilio.com/docs/errors/20003',
+  details: undefined
+}
+[2023-04-12T18:21:40.638] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-04-12T18:21:49.351] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-04-12T18:21:51.103] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-04-12T18:21:53.286] [WARN] default - GET request from /urlProducto2.com route
+[2023-04-12T18:21:53.299] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-04-12T18:22:15.056] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-04-12T18:22:15.543] [WARN] default - RestException [Error]: Authenticate
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/services/services.js:58:23) {
+  status: 401,
+  code: 20003,
+  moreInfo: 'https://www.twilio.com/docs/errors/20003',
+  details: undefined
+}
+[2023-04-12T18:43:50.465] [WARN] default - GET request from /urlProducto2.com route
+[2023-04-12T18:44:02.340] [WARN] default - RestException [Error]: Authenticate
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/services/services.js:58:23) {
+  status: 401,
+  code: 20003,
+  moreInfo: 'https://www.twilio.com/docs/errors/20003',
+  details: undefined
+}
+[2023-04-12T18:50:22.633] [WARN] default - GET request from /urlProducto2.com route
