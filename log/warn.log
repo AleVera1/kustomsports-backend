@@ -434,3 +434,43 @@
   details: undefined
 }
 [2023-04-12T18:50:22.633] [WARN] default - GET request from /urlProducto2.com route
+[2023-04-20T18:11:35.672] [WARN] default - GET request from /favicon.ico route
+[2023-04-20T18:11:47.680] [WARN] default - GET request from /urlProducto2.com route
+[2023-04-20T18:12:46.450] [WARN] default - GET request from /noticias route
+[2023-04-20T18:12:52.712] [WARN] default - GET request from /graphql route
+[2023-04-20T18:13:41.807] [WARN] default - GET request from /graphql route
+[2023-04-20T18:19:33.595] [WARN] default - GET request from /graphql route
+[2023-04-20T18:21:47.573] [WARN] default - GET request from /graphql route
+[2023-04-20T18:21:49.017] [WARN] default - GET request from /graphql route
+[2023-04-20T18:21:49.417] [WARN] default - GET request from /graphql route
+[2023-04-20T18:21:49.595] [WARN] default - GET request from /graphql route
+[2023-04-20T18:21:49.747] [WARN] default - GET request from /graphql route
+[2023-04-20T18:21:49.891] [WARN] default - GET request from /graphql route
+[2023-04-20T18:21:50.023] [WARN] default - GET request from /graphql route
+[2023-04-20T18:21:50.166] [WARN] default - GET request from /graphql route
+[2023-04-20T18:21:50.302] [WARN] default - GET request from /graphql route
+[2023-04-20T18:21:50.429] [WARN] default - GET request from /graphql route
+[2023-04-20T18:21:50.574] [WARN] default - GET request from /graphql route
+[2023-04-20T18:23:58.862] [WARN] default - GET request from /graphql route
+[2023-04-20T18:25:37.362] [WARN] default - GET request from /urlProducto1.com route
+[2023-04-20T18:25:37.364] [WARN] default - GET request from /urlProducto2.com route
+[2023-04-20T18:25:42.347] [WARN] default - RestException [Error]: Authenticate
+    at success (C:\Users\aevla\Desktop\coder\backend\proyecto final\kustomsports-backend\node_modules\twilio\lib\base\Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async sendSMS (file:///C:/Users/aevla/Desktop/coder/backend/proyecto%20final/kustomsports-backend/src/services/services.js:58:23) {
+  status: 401,
+  code: 20003,
+  moreInfo: 'https://www.twilio.com/docs/errors/20003',
+  details: undefined
+}
+[2023-04-20T18:25:46.445] [WARN] default - GET request from /js/bootstrap.bundle.min.js.map route
+[2023-04-20T18:40:03.998] [WARN] default - GET request from /graphql route
+[2023-04-20T19:05:56.114] [WARN] default - GET request from /graphql route
+[2023-04-20T19:12:40.206] [WARN] default - GET request from /graphql route
+[2023-04-20T19:12:40.977] [WARN] default - GET request from /graphql route
+[2023-04-20T19:12:41.145] [WARN] default - GET request from /graphql route
+[2023-04-20T19:12:41.300] [WARN] default - GET request from /graphql route
+[2023-04-20T19:12:41.441] [WARN] default - GET request from /graphql route
+[2023-04-20T19:12:41.596] [WARN] default - GET request from /graphql route
+[2023-04-21T10:12:08.762] [WARN] default - GET request from /favicon.ico route
+[2023-04-21T10:12:12.602] [WARN] default - GET request from /graphql route

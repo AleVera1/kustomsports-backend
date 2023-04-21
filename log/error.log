@@ -97,3 +97,13 @@
 [2023-04-08T15:26:37.350] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'user')
 [2023-04-08T15:26:55.607] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'user')
 [2023-04-09T15:14:17.316] [ERROR] default - TypeError: EcommerceFactory.createDao is not a function
+[2023-04-21T10:34:19.772] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'login')
+[2023-04-21T10:34:49.135] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'login')
+[2023-04-21T10:35:07.822] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'login')
+[2023-04-21T10:38:05.025] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'login')
+[2023-04-21T10:38:05.840] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'login')
+[2023-04-21T10:38:06.433] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'login')
+[2023-04-21T10:43:48.869] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'login')
+[2023-04-21T11:14:31.982] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'render')
+[2023-04-21T11:20:39.393] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'login')
+[2023-04-21T11:52:16.082] [ERROR] default - TypeError: Cannot read properties of undefined (reading 'login')
