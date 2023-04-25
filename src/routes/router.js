@@ -1,39 +1,64 @@
 import { Router } from "express";
 import passport from "passport";
-import { getMainPage, getLogin, postLogin, getLogout, getRegister, postRegister, getRegisterError, getLoginError, getSpecs, getProduct, postProducts, postAdd, getCart, postCartBuy, unknownRoute} from "../controllers/controller.js"
-import uploader from "../services/multer.js"
+import { controller } from "../controllers/controller.js";
+import { graphqlHTTP } from "express-graphql";
+import prodSchema from "../graphql/product.modules.js";
+import uploader from "../services/multer.js";
 
-const router = Router()
+const router = Router();
 
-router.get('/', getMainPage)
+router.get("/", controller.getMainPage);
 
-router.get('/login', getLogin)
+router.use(
+  "/graphql",
+  graphqlHTTP({
+    schema: prodSchema,
+    rootValue: {
+      getCart: controller.getCart,
+    },
+    graphiql: true,
+    context: ({ req }) => ({
+      status: req.session.login,
+      username: req.session.username,
+    }),
+  })
+);
 
-router.post('/login', passport.authenticate("login", { failureRedirect: "/loginError" }), postLogin)
+router.get("/login", controller.getLogin);
 
-router.get('/logout', getLogout)
+router.post(
+  "/login",
+  passport.authenticate("login", { failureRedirect: "/loginError" }),
+  controller.postLogin
+);
 
-router.get('/register', getRegister)
+router.get("/logout", controller.getLogout);
 
-router.post('/register', uploader, passport.authenticate("register", {failureRedirect: "/registerError"}), postRegister);
+router.get("/register", controller.getRegister);
 
-router.get('/registerError', getRegisterError)
+router.post(
+  "/register",
+  uploader,
+  passport.authenticate("register", { failureRedirect: "/registerError" }),
+  controller.postRegister
+);
 
-router.get('/loginError', getLoginError)
+router.get("/registerError", controller.getRegisterError);
 
-router.get('/info', getSpecs)
+router.get("/loginError", controller.getLoginError);
 
-router.get('/productos', getProduct);
+router.get("/info", controller.getSpecs);
 
-router.post('/productos', postProducts);
+router.get("/productos", controller.getProduct);
 
-router.route("/add").post(postAdd);
+router.post("/productos", controller.postProducts);
 
-router.route("/cart").get(getCart);
+router.route("/add").post(controller.postAdd);
 
-router.route("/cart/comprar").post(postCartBuy)
+router.route("/cart").get(controller.getCart);
 
-router.get("*", unknownRoute)
+router.route("/cart/comprar").post(controller.postCartBuy);
+
+/* router.get("*", controller.unknownRoute) */
 
 export default router;
-

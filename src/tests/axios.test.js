@@ -13,9 +13,9 @@ const addProd = async () => {
   try {
     const response = await axios.post("/add", {
       prodName: "test",
-      username: "test"
+      username: "test",
     });
-    console.log("Server response:", response.data.data)
+    console.log("Server response:", response.data.data);
   } catch (err) {
     console.log(err);
   }
