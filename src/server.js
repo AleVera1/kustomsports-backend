@@ -21,9 +21,9 @@ import compression from "compression";
 import logger from "./loggers/Log4jsLogger.js";
 import loggerMiddleware from "./middlewares/routesLogger.middleware.js";
 import cookieParser from "cookie-parser";
-/* import { graphqlHTTP } from "express-graphql";
+import { graphqlHTTP } from "express-graphql";
 import { controller } from "./controllers/controller.js";
-import prodSchema from "./graphql/product.modules.js"; */
+import prodSchema from "./graphql/product.modules.js";
 
 dotenv.config();
 
@@ -86,7 +86,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/cart', cartRouter);
 app.use('/test', otherRouter); */
 app.use("/", generalRouter);
-/* app.use(
+app.use(
   "/graphql",
   graphqlHTTP({
     schema: prodSchema,
@@ -95,7 +95,7 @@ app.use("/", generalRouter);
     },
     graphiql: true,
   })
-); */
+);
 
 app.all("*", (req, res) => {
   res.status(404).json({ error: "ruta no existente" });
