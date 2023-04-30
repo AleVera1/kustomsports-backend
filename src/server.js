@@ -1,60 +1,56 @@
-import express from "express";
-import { engine } from "express-handlebars";
-import generalRouter from "./routes/router.js";
-import { MensajesDao } from "./dao/MensajesDao.js";
-import { ProductoDao } from "./dao/ProductoDao.js";
-import http from "http";
+import Koa from "koa";
+import handlebars from "koa-handlebars";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import { Server } from "socket.io";
-import session from "express-session";
-import path from "path";
-import mongoStore from "connect-mongo";
-import cluster from "cluster";
-import os from "os";
-import { passportStrategies } from "./lib/passport.lib.js";
+import { MensajesDao } from "./dao/MensajesDao.js";
+import { ProductoDao } from "./dao/ProductoDao.js";
 import { User } from "./modules/user.modules.js";
-import passport from "passport";
+import passport from "koa-passport";
+import { passportStrategies } from "./lib/passport.lib.js";
 import parseArgs from "minimist";
 import dotenv from "dotenv";
-import compression from "compression";
+import os from "os";
+import compress from "koa-compress";
 import logger from "./loggers/Log4jsLogger.js";
 import loggerMiddleware from "./middlewares/routesLogger.middleware.js";
-import cookieParser from "cookie-parser";
-import { graphqlHTTP } from "express-graphql";
-import { controller } from "./controllers/controller.js";
-import prodSchema from "./graphql/product.modules.js";
+import router from "./routes/router.js";
+import koaMongoStore from "koa-session-mongoose";
+import session from "koa-session";
+import serve from "koa-static";
 
 dotenv.config();
 
-const app = express();
-
-const server = http.createServer(app);
+const app = new Koa();
 
 const productosDao = new ProductoDao();
 const chat = new MensajesDao();
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = dirname(__filename);
 
-app.use(express.static("public"));
+const mongoStore = koaMongoStore.create({
+  mongoUrl: process.env.MONGO_URI,
+  options: {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+});
 
-app.use(cookieParser());
+app.keys = [process.env.SECRET];
 
 app.use(
-  session({
-    store: mongoStore.create({
-      mongoUrl: process.env.MONGO_URI,
-      options: {
-        userNewParser: true,
-        useUnifiedTopology: true,
+  session(
+    {
+      store: mongoStore,
+      resave: true,
+      saveUninitialized: true,
+      cookie: {
+        maxAge: 600000, //10 min.
       },
-    }),
-    secret: process.env.SECRET,
-    resave: true,
-    saveUninitialized: true,
-    cookie: { maxAge: 600000 }, //10 min.
-  })
+    },
+    app
+  )
 );
 
 passport.use("login", passportStrategies.loginStrategy);
@@ -63,55 +59,42 @@ passport.use("register", passportStrategies.registerStrategy);
 passport.serializeUser((user, done) => {
   done(null, user._id);
 });
-//
-passport.deserializeUser((id, done) => {
-  User.findById(id)
-    .then((data) => {
-      done(null, data);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const data = await User.findById(id);
+    done(null, data);
+  } catch (err) {
+    console.error(err);
+    done(err);
+  }
 });
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(loggerMiddleware);
-app.use(compression());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(compress());
+app.use(serve("public"));
 
 /* app.use('/productos', productRouter);
 app.use('/cart', cartRouter);
 app.use('/test', otherRouter); */
-app.use("/", generalRouter);
+app.use(router.routes()).use(router.allowedMethods());
+
+/* app.use(async (ctx) => {
+  ctx.response.status = 404;
+  ctx.response.body = { error: "ruta no existente" };
+}); */
+
 app.use(
-  "/graphql",
-  graphqlHTTP({
-    schema: prodSchema,
-    rootValue: {
-      getCart: controller.getCart,
-    },
-    graphiql: true,
-  })
-);
-
-app.all("*", (req, res) => {
-  res.status(404).json({ error: "ruta no existente" });
-});
-
-app.set("views", "./src/views");
-app.set("view engine", "hbs");
-
-app.engine(
-  "hbs",
-  engine({
-    extname: ".hbs",
+  handlebars({
+    extension: ".hbs",
     defaultLayout: "index.hbs",
+    viewsDir: __dirname + "/views",
     layoutsDir: __dirname + "/views/layouts",
     partialsDir: __dirname + "/views/partials",
-    allowProtoPropertiesByDefault: true,
+    allowProtoMethodsByDefault: true,
   })
 );
 
@@ -133,11 +116,11 @@ const cpus = os.cpus();
 const PORT = process.env.PORT;
 
 const startServer = () => {
-  const expressServer = app.listen(PORT, () =>
+  const koaServer = app.listen(PORT, () =>
     logger.info(` >>>>> 🚀 Server started at http://localhost:${PORT}`)
   );
 
-  const io = new Server(expressServer);
+  const io = new Server(koaServer);
 
   io.on("connection", async (socket) => {
     console.log("🟢 Usuario conectado");
@@ -169,7 +152,7 @@ const startServer = () => {
     });
   });
 
-  server.on("error", (err) => logger.log(err));
+  app.on("error", (err) => logger.log(err));
 };
 
 if (minimistArgs.mode === "cluster") {

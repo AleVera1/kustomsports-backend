@@ -1,28 +1,26 @@
 import { buildSchema } from "graphql";
 
-const schema = buildSchema(`
-  input ProductoInput {
-    name: String
+const prodSchema = buildSchema(`
+  type Product {
+    title: String!,
+    price: Int,
+    image: String,
+    stock: Int,
+    timestamp: String,
+    code: String,
     description: String
-    price: Int
   }
-
-  type Producto {
-    id: ID!
-    name: String
-    description: String
-    price: Int
+  type Cart {
+    timestamp: String,
+    username: String!,
+    products: [Product]
   }
-
   type Query {
-    getProducto(id: ID!): Producto
+    getCart(username: String!): Cart
   }
-
   type Mutation {
-    createProducto(datos: ProductoInput): Producto
-    updateProducto(id: ID!, datos: ProductoInput): Producto
-    deleteProducto(id: ID!): Producto
+    clearCart(username: String!): Cart,
   }
 `);
 
-export default schema;
+export default prodSchema;

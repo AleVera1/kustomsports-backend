@@ -1,7 +1,7 @@
-export default function auth(req, res, next) {
-  if (req.session.login) {
-      next();
+export default function auth(ctx, next) {
+  if (ctx.session.login) {
+    next();
   } else {
-      return res.status(401).send('No autorizado');
+    return ctx.status(401).send("No autorizado");
   }
 }
