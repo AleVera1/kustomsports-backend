@@ -18,10 +18,13 @@ import router from "./routes/router.js";
 import koaMongoStore from "koa-session-mongoose";
 import session from "koa-session";
 import serve from "koa-static";
+import { koaBody } from "koa-body";
 
 dotenv.config();
 
 const app = new Koa();
+
+app.use(koaBody());
 
 const productosDao = new ProductoDao();
 const chat = new MensajesDao();
