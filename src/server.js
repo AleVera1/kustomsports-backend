@@ -1,59 +1,59 @@
 import Koa from "koa";
-import handlebars from "koa-handlebars";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-import { Server } from "socket.io";
+import koaStatic from "koa-static";
+import bodyParser from "koa-bodyparser";
+import router from "./routes/router.js";
 import { MensajesDao } from "./dao/MensajesDao.js";
 import { ProductoDao } from "./dao/ProductoDao.js";
-import { User } from "./modules/user.modules.js";
-import passport from "koa-passport";
+import http from "http";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+import handlebars from "handlebars";
+import Handlebars from "koa-handlebars";
+import { Server } from "socket.io";
+import session from "koa-generic-session";
+import path from "path";
+import mongoStore from "connect-mongo";
+import cluster from "cluster";
+import os from "os";
 import { passportStrategies } from "./lib/passport.lib.js";
+import { User } from "./modules/user.modules.js";
+import passport from "passport";
 import parseArgs from "minimist";
 import dotenv from "dotenv";
-import os from "os";
-import compress from "koa-compress";
+import compression from "compression";
 import logger from "./loggers/Log4jsLogger.js";
 import loggerMiddleware from "./middlewares/routesLogger.middleware.js";
-import router from "./routes/router.js";
-import koaMongoStore from "koa-session-mongoose";
-import session from "koa-session";
-import serve from "koa-static";
-import { koaBody } from "koa-body";
 
 dotenv.config();
 
 const app = new Koa();
 
-app.use(koaBody());
+const server = http.createServer(app.callback());
 
 const productosDao = new ProductoDao();
 const chat = new MensajesDao();
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = path.dirname(__filename);
 
-const mongoStore = koaMongoStore.create({
-  mongoUrl: process.env.MONGO_URI,
-  options: {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-});
+app.use(koaStatic(path.join(__dirname, "/src/public")));
 
-app.keys = [process.env.SECRET];
+app.use(bodyParser());
 
 app.use(
-  session(
-    {
-      store: mongoStore,
-      resave: true,
-      saveUninitialized: true,
-      cookie: {
-        maxAge: 600000, //10 min.
+  session({
+    store: mongoStore.create({
+      mongoUrl: process.env.MONGO_URI,
+      options: {
+        userNewParser: true,
+        useUnifiedTopology: true,
       },
-    },
-    app
-  )
+    }),
+    secret: process.env.SECRET,
+    resave: true,
+    saveUninitialized: true,
+    cookie: { maxAge: 600000 }, //10 min.
+  })
 );
 
 passport.use("login", passportStrategies.loginStrategy);
@@ -62,44 +62,34 @@ passport.use("register", passportStrategies.registerStrategy);
 passport.serializeUser((user, done) => {
   done(null, user._id);
 });
-
-passport.deserializeUser(async (id, done) => {
-  try {
-    const data = await User.findById(id);
-    done(null, data);
-  } catch (err) {
-    console.error(err);
-    done(err);
-  }
+//
+passport.deserializeUser((id, done) => {
+  User.findById(id)
+    .then((data) => {
+      done(null, data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 });
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(loggerMiddleware);
-app.use(compress());
-app.use(serve("public"));
 
-/* app.use('/productos', productRouter);
-app.use('/cart', cartRouter);
-app.use('/test', otherRouter); */
-app.use(router.routes()).use(router.allowedMethods());
-
-/* app.use(async (ctx) => {
-  ctx.response.status = 404;
-  ctx.response.body = { error: "ruta no existente" };
-}); */
-
-app.use(
-  handlebars({
-    extension: ".hbs",
-    defaultLayout: "index.hbs",
-    viewsDir: __dirname + "/views",
-    layoutsDir: __dirname + "/views/layouts",
+const configHandlebars = {
+  viewEngine: new Handlebars({
     partialsDir: __dirname + "/views/partials",
+    defaultLayout: "index.hbs",
+    layoutsDir: __dirname + "/views/layouts",
     allowProtoMethodsByDefault: true,
-  })
-);
+  }),
+  viewPath: __dirname + "/views",
+};
+
+app.use(Handlebars(configHandlebars));
+
+app.use(router.routes());
 
 const args = process.argv.slice(2);
 const options = {
@@ -119,11 +109,11 @@ const cpus = os.cpus();
 const PORT = process.env.PORT;
 
 const startServer = () => {
-  const koaServer = app.listen(PORT, () =>
+  const expressServer = server.listen(PORT, () =>
     logger.info(` >>>>> 🚀 Server started at http://localhost:${PORT}`)
   );
 
-  const io = new Server(koaServer);
+  const io = new Server(expressServer);
 
   io.on("connection", async (socket) => {
     console.log("🟢 Usuario conectado");
@@ -155,7 +145,7 @@ const startServer = () => {
     });
   });
 
-  app.on("error", (err) => logger.log(err));
+  server.on("error", (err) => logger.log(err));
 };
 
 if (minimistArgs.mode === "cluster") {
@@ -177,3 +167,27 @@ if (minimistArgs.mode === "cluster") {
   );
   process.exit(1);
 }
+
+/* const mongoStore = koaMongoStore.create({
+  mongoUrl: process.env.MONGO_URI,
+  options: {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+});
+
+app.keys = [process.env.SECRET];
+
+app.use(
+  session(
+    {
+      store: mongoStore,
+      resave: true,
+      saveUninitialized: true,
+      cookie: {
+        maxAge: 600000, //10 min.
+      },
+    },
+    app
+  )
+); */
