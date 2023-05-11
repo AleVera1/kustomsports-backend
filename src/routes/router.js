@@ -51,6 +51,10 @@ router.get("/info", controller.getSpecs);
 
 router.get("/productos", controller.getProduct);
 
+router.get("/productos/:id", controller.getProductById);
+
+router.delete("/productos/:id", controller.deleteProductById);
+
 router.post("/productos", controller.postProducts);
 
 router.route("/add").post(controller.postAdd);
@@ -59,6 +63,6 @@ router.route("/cart").get(controller.getCart);
 
 router.route("/cart/comprar").post(controller.postCartBuy);
 
-/* router.get("*", controller.unknownRoute) */
+router.get("*", controller.unknownRoute);
 
 export default router;

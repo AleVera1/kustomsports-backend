@@ -97,10 +97,6 @@ app.use(
   })
 );
 
-app.all("*", (req, res) => {
-  res.status(404).json({ error: "ruta no existente" });
-});
-
 app.set("views", "./src/views");
 app.set("view engine", "hbs");
 

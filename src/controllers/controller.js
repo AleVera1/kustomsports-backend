@@ -1,4 +1,4 @@
-import { sendMail, sendSMS } from "../services/services.js";
+import { sendMail } from "../services/services.js";
 import EcommerceFactory from "../persistances/factory_ecommerce.js";
 import os from "os";
 import logger from "../loggers/Log4jsLogger.js";
@@ -95,6 +95,21 @@ const getProduct = async (req, res) => {
   });
 };
 
+const getProductById = async (req, res) => {
+  const productos = EcommerceFactory.createDAO("mongo");
+  const product = await productos.getProdById(req.params.id);
+  res.status(200).json(product);
+};
+
+const deleteProductById = async (req, res) => {
+  const productos = EcommerceFactory.createDAO("mongo");
+  const deletedProduct = await productos.deleteProdById(req.params.id);
+  if (!deletedProduct) {
+    return res.status(404).json({ message: "Product not found" });
+  }
+  res.status(200).json({ message: "Product successfully deleted" });
+};
+
 const postProducts = async (req, res) => {
   const { body } = req;
   const createAProduct = EcommerceFactory.createDAO("mongo");
@@ -154,7 +169,6 @@ const postCartBuy = async (req, res) => {
   const userCart = await carrito.getDetailedCart(req);
   const userCartText = JSON.stringify(userCart);
   sendMail(req, "purchase", "New purchase", userCartText);
-  sendSMS(req, "Order recieved and in process");
   carrito.clearCart(req);
   res.redirect("/");
 };
@@ -175,6 +189,8 @@ export const controller = {
   getLoginError,
   getSpecs,
   getProduct,
+  getProductById,
+  deleteProductById,
   postProducts,
   postAdd,
   getCart,
