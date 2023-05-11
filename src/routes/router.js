@@ -1,28 +1,11 @@
 import { Router } from "express";
 import passport from "passport";
 import { controller } from "../controllers/controller.js";
-import { graphqlHTTP } from "express-graphql";
-import prodSchema from "../graphql/product.modules.js";
 import uploader from "../services/multer.js";
 
 const router = Router();
 
 router.get("/", controller.getMainPage);
-
-router.use(
-  "/graphql",
-  graphqlHTTP({
-    schema: prodSchema,
-    rootValue: {
-      getCart: controller.getCart,
-    },
-    graphiql: true,
-    context: ({ req }) => ({
-      status: req.session.login,
-      username: req.session.username,
-    }),
-  })
-);
 
 router.get("/login", controller.getLogin);
 
