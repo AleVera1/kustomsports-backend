@@ -1,64 +1,49 @@
 import { createTransport } from "nodemailer";
-import logger from "../loggers/Log4jsLogger.js"
+import logger from "../loggers/Log4jsLogger.js";
 import twilio from "twilio";
-import dotenv from "dotenv"
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
-const sendMail = async (req, type = "newUser", subject = "Nuevo usuario registrado", items) => {
+const sendMail = async (
+  req,
+  type = "newUser",
+  subject = "Nuevo usuario registrado",
+  items
+) => {
   const transporter = createTransport({
-    host: 'smtp.ethereal.email',
+    host: "smtp.ethereal.email",
     port: 587,
     auth: {
-        user: 'vicente7@ethereal.email',
-        pass: 'gs1yRQqhyNqAEAjwHP'
-    }
+      user: "vicente7@ethereal.email",
+      pass: "gs1yRQqhyNqAEAjwHP",
+    },
   });
 
   const adminMail = "aevlanus@gmail.com";
 
   let mailBody = "";
-    switch (type) {
-        case "newUser":
-            mailBody = `<p>New user with mail:${req.body.username}, name:${req.body.name}, address:${req.body.address}, age:${req.body.age} and phone:${req.body.phone}</p>`;
-            break;
-        case "purchase":
-            mailBody = `<p>New purchase from user ${req.user.username}, details:${items}</p>`;
-            break;
-    };
+  switch (type) {
+    case "newUser":
+      mailBody = `<p>New user with mail:${req.body.username}, name:${req.body.name}, address:${req.body.address}, age:${req.body.age} and phone:${req.body.phone}</p>`;
+      break;
+    case "purchase":
+      mailBody = `<p>New purchase from user ${req.user.username}, details:${items}</p>`;
+      break;
+  }
 
-    const mailOptions = {
+  const mailOptions = {
     from: "Node Server",
     to: adminMail,
     subject,
-    html: mailBody
-    };
+    html: mailBody,
+  };
 
-    try {
+  try {
     transporter.sendMail(mailOptions);
-    }
-    catch (err) {
+  } catch (err) {
     logger.info("Failed to send mail");
-    }
-}
-
-const sendSMS = async (req, message) => {
-  const accountSid = process.env.TWILIOSSID;
-  const authToken = process.env.TWILIOAUTH;
-  
-  const client = twilio(accountSid, authToken);
-
-  const options = {
-      body: message,
-      from: "+14406888709",
-      to: req.user.phone,
-    };
-    
-    try {
-      const message = await client.messages.create(options);
-    } catch (err) {
-      logger.warn(err);
-    } 
+  }
 };
 
-export { sendMail, sendSMS};
+export { sendMail };

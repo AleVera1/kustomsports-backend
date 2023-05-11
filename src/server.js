@@ -1,16 +1,13 @@
-import Koa from "koa";
-import koaStatic from "koa-static";
-import bodyParser from "koa-bodyparser";
-import router from "./routes/router.js";
+import express from "express";
+import { engine } from "express-handlebars";
+import generalRouter from "./routes/router.js";
 import { MensajesDao } from "./dao/MensajesDao.js";
 import { ProductoDao } from "./dao/ProductoDao.js";
 import http from "http";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import handlebars from "handlebars";
-import Handlebars from "koa-handlebars";
 import { Server } from "socket.io";
-import session from "koa-generic-session";
+import session from "express-session";
 import path from "path";
 import mongoStore from "connect-mongo";
 import cluster from "cluster";
@@ -23,12 +20,16 @@ import dotenv from "dotenv";
 import compression from "compression";
 import logger from "./loggers/Log4jsLogger.js";
 import loggerMiddleware from "./middlewares/routesLogger.middleware.js";
+import cookieParser from "cookie-parser";
+import { graphqlHTTP } from "express-graphql";
+import { controller } from "./controllers/controller.js";
+import prodSchema from "./graphql/product.modules.js";
 
 dotenv.config();
 
-const app = new Koa();
+const app = express();
 
-const server = http.createServer(app.callback());
+const server = http.createServer(app);
 
 const productosDao = new ProductoDao();
 const chat = new MensajesDao();
@@ -36,9 +37,9 @@ const chat = new MensajesDao();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(koaStatic(path.join(__dirname, "/src/public")));
+app.use(express.static("public"));
 
-app.use(bodyParser());
+app.use(cookieParser());
 
 app.use(
   session({
@@ -75,21 +76,40 @@ passport.deserializeUser((id, done) => {
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(loggerMiddleware);
 
-const configHandlebars = {
-  viewEngine: new Handlebars({
-    partialsDir: __dirname + "/views/partials",
+app.use(loggerMiddleware);
+app.use(compression());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+/* app.use('/productos', productRouter);
+app.use('/cart', cartRouter);
+app.use('/test', otherRouter); */
+app.use("/", generalRouter);
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema: prodSchema,
+    rootValue: {
+      getCart: controller.getCart,
+    },
+    graphiql: true,
+  })
+);
+
+app.set("views", "./src/views");
+app.set("view engine", "hbs");
+
+app.engine(
+  "hbs",
+  engine({
+    extname: ".hbs",
     defaultLayout: "index.hbs",
     layoutsDir: __dirname + "/views/layouts",
-    allowProtoMethodsByDefault: true,
-  }),
-  viewPath: __dirname + "/views",
-};
-
-app.use(Handlebars(configHandlebars));
-
-app.use(router.routes());
+    partialsDir: __dirname + "/views/partials",
+    allowProtoPropertiesByDefault: true,
+  })
+);
 
 const args = process.argv.slice(2);
 const options = {
@@ -109,7 +129,7 @@ const cpus = os.cpus();
 const PORT = process.env.PORT;
 
 const startServer = () => {
-  const expressServer = server.listen(PORT, () =>
+  const expressServer = app.listen(PORT, () =>
     logger.info(` >>>>> 🚀 Server started at http://localhost:${PORT}`)
   );
 
@@ -167,27 +187,3 @@ if (minimistArgs.mode === "cluster") {
   );
   process.exit(1);
 }
-
-/* const mongoStore = koaMongoStore.create({
-  mongoUrl: process.env.MONGO_URI,
-  options: {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-});
-
-app.keys = [process.env.SECRET];
-
-app.use(
-  session(
-    {
-      store: mongoStore,
-      resave: true,
-      saveUninitialized: true,
-      cookie: {
-        maxAge: 600000, //10 min.
-      },
-    },
-    app
-  )
-); */

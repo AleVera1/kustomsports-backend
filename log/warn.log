@@ -474,3 +474,6 @@
 [2023-04-20T19:12:41.596] [WARN] default - GET request from /graphql route
 [2023-04-21T10:12:08.762] [WARN] default - GET request from /favicon.ico route
 [2023-04-21T10:12:12.602] [WARN] default - GET request from /graphql route
+[2023-05-11T11:48:52.129] [WARN] default - GET request from /favicon.ico route
+[2023-05-11T11:50:16.347] [WARN] default - GET request from /urlProducto5.com route
+[2023-05-11T11:50:16.349] [WARN] default - GET request from /urlProducto1.com route

@@ -1,25 +1,45 @@
-import Router from "koa-router";
-import passport from "koa-passport";
+import { Router } from "express";
+import passport from "passport";
 import { controller } from "../controllers/controller.js";
-import { graphqlKoa } from "graphql-server-koa";
-import { graphqlHTTP } from "koa-graphql";
+import { graphqlHTTP } from "express-graphql";
 import prodSchema from "../graphql/product.modules.js";
 import uploader from "../services/multer.js";
 
-const router = new Router();
+const router = Router();
 
 router.get("/", controller.getMainPage);
 
-router.post("/login", passport.authenticate("login"), controller.postLogin);
-
-router.get("/logout", controller.getLogout);
+router.use(
+  "/graphql",
+  graphqlHTTP({
+    schema: prodSchema,
+    rootValue: {
+      getCart: controller.getCart,
+    },
+    graphiql: true,
+    context: ({ req }) => ({
+      status: req.session.login,
+      username: req.session.username,
+    }),
+  })
+);
 
 router.get("/login", controller.getLogin);
 
 router.post(
+  "/login",
+  passport.authenticate("login", { failureRedirect: "/loginError" }),
+  controller.postLogin
+);
+
+router.get("/logout", controller.getLogout);
+
+router.get("/register", controller.getRegister);
+
+router.post(
   "/register",
   uploader,
-  passport.authenticate("register"),
+  passport.authenticate("register", { failureRedirect: "/registerError" }),
   controller.postRegister
 );
 
@@ -31,40 +51,18 @@ router.get("/info", controller.getSpecs);
 
 router.get("/productos", controller.getProduct);
 
+router.get("/productos/:id", controller.getProductById);
+
+router.delete("/productos/:id", controller.deleteProductById);
+
 router.post("/productos", controller.postProducts);
 
-router.post("/add", controller.postAdd);
+router.route("/add").post(controller.postAdd);
 
-router.get("/cart", controller.getCart);
+router.route("/cart").get(controller.getCart);
 
-router.post("/cart/comprar", controller.postCartBuy);
+router.route("/cart/comprar").post(controller.postCartBuy);
 
-router.all(
-  "/graphql",
-  graphqlKoa((ctx) => ({
-    schema: prodSchema,
-    rootValue: {
-      getCart: controller.getCart,
-    },
-    graphiql: true,
-    context: {
-      status: ctx.session.login,
-      username: ctx.session.username,
-    },
-  }))
-);
-
-router.use(
-  "/graphql",
-  graphqlHTTP({
-    schema: prodSchema,
-    rootValue: {
-      getCart: controller.getCart,
-    },
-    graphiql: true,
-  })
-);
-
-/* router.get("*", controller.unknownRoute) */
+router.get("*", controller.unknownRoute);
 
 export default router;
