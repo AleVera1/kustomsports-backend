@@ -1,6 +1,5 @@
 import { createTransport } from "nodemailer";
 import logger from "../loggers/Log4jsLogger.js";
-import twilio from "twilio";
 import dotenv from "dotenv";
 
 dotenv.config();

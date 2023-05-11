@@ -21,9 +21,6 @@ import compression from "compression";
 import logger from "./loggers/Log4jsLogger.js";
 import loggerMiddleware from "./middlewares/routesLogger.middleware.js";
 import cookieParser from "cookie-parser";
-import { graphqlHTTP } from "express-graphql";
-import { controller } from "./controllers/controller.js";
-import prodSchema from "./graphql/product.modules.js";
 
 dotenv.config();
 
@@ -82,20 +79,7 @@ app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-/* app.use('/productos', productRouter);
-app.use('/cart', cartRouter);
-app.use('/test', otherRouter); */
 app.use("/", generalRouter);
-app.use(
-  "/graphql",
-  graphqlHTTP({
-    schema: prodSchema,
-    rootValue: {
-      getCart: controller.getCart,
-    },
-    graphiql: true,
-  })
-);
 
 app.set("views", "./src/views");
 app.set("view engine", "hbs");
