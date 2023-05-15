@@ -32,9 +32,15 @@ router.get("/loginError", controller.getLoginError);
 
 router.get("/info", controller.getSpecs);
 
+router.get("/chat", controller.getChat);
+
+router.get("/chat/:email", controller.getChatByEmail);
+
 router.get("/productos", controller.getProduct);
 
 router.get("/productos/:id", controller.getProductById);
+
+router.get("/productos/:category", controller.getProductByCategory);
 
 router.delete("/productos/:id", controller.deleteProductById);
 

@@ -11,6 +11,7 @@
           <th scope="col">Código</th>
           <th scope="col">Stock</th>
           <th scope="col">Descripción</th>
+          <th scope="col">Categoría</th>
       </tr>
     </thead>
     <tbody>
@@ -23,6 +24,7 @@
           <td>{{this.stock}}</td>
           <td>{{this.code}}</td>
           <td>{{this.description}}</td>
+          <td>{{this.category}}</td>
           <td>
             <form action="/add" method="post">
                 <input type="hidden" value="{{this.title}}" name="prodName"/>

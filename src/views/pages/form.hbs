@@ -26,59 +26,38 @@
     </div>
 
     <div class="col-sm-3">
-  <div class="input-group input-group-sm mb-3">
-    <span class="input-group-text" id="basic-addon3">Stock</span>
-    <input id="input-stock" type="number" name="stock" required class="form-control" placeholder="Ingresá el stock" aria-label="stock" aria-describedby="basic-addon3">
-  </div>
-</div>
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="basic-addon3">Stock</span>
+        <input id="input-stock" type="number" name="stock" required class="form-control" placeholder="Ingresá el stock" aria-label="stock" aria-describedby="basic-addon3">
+      </div>
+    </div>
 
-<div class="col-sm-3">
-  <div class="input-group input-group-sm mb-3">
-    <span class="input-group-text" id="basic-addon3">Código</span>
-    <input id="input-code" type="text" name="code" required class="form-control" placeholder="Ingresá el código" aria-label="code" aria-describedby="basic-addon3">
-  </div>
-</div>
+    <div class="col-sm-3">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="basic-addon3">Código</span>
+        <input id="input-code" type="text" name="code" required class="form-control" placeholder="Ingresá el código" aria-label="code" aria-describedby="basic-addon3">
+      </div>
+    </div>
 
-<div class="col-sm-5">
-  <div class="input-group input-group-sm mb-3">
-    <span class="input-group-text" id="basic-addon3">Descripción</span>
-    <input id="input-description" type="text" name="description" required class="form-control" placeholder="Ingresá la descripción" aria-label="description" aria-describedby="basic-addon3">
-  </div>
-</div>
+    <div class="col-sm-5">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="basic-addon3">Descripción</span>
+        <input id="input-description" type="text" name="description" required class="form-control" placeholder="Ingresá la descripción" aria-label="description" aria-describedby="basic-addon3">
+      </div>
+    </div>
+
+    <div class="col-sm-5">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="basic-addon3">Categoria</span>
+        <input id="input-category" type="text" name="category" required class="form-control" placeholder="Ingresá la categoría" aria-label="category" aria-describedby="basic-addon3">
+      </div>
+    </div>
 
     <div class="col-sm-2">
       <div class="d-grid gap-2">
         <button id="btn-submit" class="btn btn-primary btn-sm" type="submit">Agregar a la lista</button>
       </div>
     </div>
-      
-    <hr>
-    <span>Chatea con otros usuarios</span>
-      
-    <div class="col-sm-3">
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="basic-addon3">Email</span>
-        <input id="input-email" type="text" name="email" required class="form-control" placeholder="Ingresá tu email" aria-label="email" aria-describedby="basic-addon1">
-      </div>
-    </div>
-
-    <div class="col-sm-5">
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="basic-addon3">Mensaje</span>
-        <input id="input-mensaje" type="email" name="mensaje" required class="form-control" placeholder="Ingresá tu mensaje" aria-label="mensaje" aria-describedby="basic-addon1">
-      </div>
-    </div>
-
-
-    <div class="col-sm-2">
-      <div class="d-grid gap-2">
-        <button id="btn-submit-mensaje" class="btn btn-success btn-sm">Enviar mensaje</button>
-      </div>
-    </div>
-    
-    <span>Historial de mensajes</span>
-    
-    <div id="historial-mensajes"></div>
     
     <hr>
     
@@ -92,6 +71,7 @@
         <th scope="col">Código</th>
         <th scope="col">Stock</th>
         <th scope="col">Descripción</th>
+        <th scope="col">Categoría</th>
       </tr>
     </thead>
     <tbody id="table-body">
@@ -106,7 +86,6 @@
   <script>
     const socket = io();
     const btn = document.getElementById('btn-submit');
-    const btnMensaje = document.getElementById('btn-submit-mensaje');
     
     const inputTitle = document.getElementById('input-title');
     const inputPrice = document.getElementById('input-price');
@@ -114,20 +93,7 @@
     const inputStock = document.getElementById('input-stock');
     const inputCode = document.getElementById('input-code');
     const inputDescription = document.getElementById('input-description');
-    
-    btnMensaje.addEventListener('click', (evt) => {
-      evt.preventDefault();
-      const email = document.getElementById('input-email').value;
-      const mensaje = document.getElementById('input-mensaje').value;
-      
-      if (email !== '' && mensaje !== '') {
-        socket.emit('nuevoMensaje', {
-          "email" : email,
-          "mensaje" : mensaje,
-          "date" : new Date().toISOString()
-        })
-      }
-    })
+    const inputCategory = document.getElementById('input-category');
     
     
     btn.addEventListener('click', (evt) => {
@@ -137,6 +103,7 @@
       const code = inputCode.value;
       const stock = inputStock.value;
       const description = inputDescription.value;
+      const category = inputCategory.value;
       
       if (title !== '' && price !== '' && image !== '' && code !== '' && stock !== '' && description !== '') {
         socket.emit('productoAgregado',{
@@ -145,33 +112,10 @@
           "image": image,
           "stock": stock,
           "code": code,
-          "description": description
+          "description": description,
+          "category": category
         })
       }
-    })
-    
-    socket.on('listaMensajesActualizada', (data) => {
-      console.log(data);
-      $('#historial-mensajes').empty();
-      data.forEach( (mensaje) => {
-        $('#historial-mensajes').append(
-        `
-        <small style="display:block"> - <em style="color:#9f9f9f">[${mensaje.date}]</em> <strong style="color:green">${mensaje.email}</strong>: ${mensaje.mensaje} </small>
-        `
-        )
-      })
-    })
-    
-    socket.on('listaMensajesBienvenida', (data) => {
-      console.log(data);
-      $('#historial-mensajes').empty();
-      data.forEach( (mensaje) => {
-        $('#historial-mensajes').append(
-        `
-        <small style="display:block"> - <em style="color:#9f9f9f">[${mensaje.date}]</em> <strong style="color:green">${mensaje.email}</strong>: ${mensaje.mensaje} </small>
-        `
-        )
-      })
     })
     
     socket.on('listaActualizada', (data) => {
@@ -187,6 +131,7 @@
             <td>${element.stock}</td>
             <td>${element.code}</td>
             <td>${element.description}</td>
+            <td>${element.category}</td>
         </tr>
         `
         )
@@ -206,6 +151,7 @@
             <td>${element.stock}</td>
             <td>${element.code}</td>
             <td>${element.description}</td>
+            <td>${element.category}</td>
         </tr>
         `
         )
