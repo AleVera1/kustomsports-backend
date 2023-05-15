@@ -2,6 +2,7 @@ import { sendMail } from "../services/services.js";
 import EcommerceFactory from "../persistances/factory_ecommerce.js";
 import os from "os";
 import logger from "../loggers/Log4jsLogger.js";
+import { MensajesDao } from "../dao/MensajesDao.js";
 
 const getMainPage = async (req, res) => {
   if (!req.session.login) {
@@ -83,6 +84,27 @@ const getSpecs = (_req, res) => {
   console.log({ args, so, nodeVer, rss, execPath, pId, folder, cores });
 };
 
+const getChat = async (req, res) => {
+  const mensajesDao = new MensajesDao();
+  const mensajes = await mensajesDao.getAll();
+  res.render("pages/chat", { mensajes, status: req.session.login });
+};
+
+const getChatByEmail = async (req, res) => {
+  try {
+    const { email } = req.params;
+    const mensajesDao = new MensajesDao();
+    const mensaje = await mensajesDao.getMessageByEmail(email);
+    if (!mensaje) {
+      return res.status(404).json({ message: "Mensaje no encontrado" });
+    }
+    res.json(mensaje);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Error al obtener el mensaje" });
+  }
+};
+
 const getProduct = async (req, res) => {
   const productos = EcommerceFactory.createDAO("mongo");
   const prods = await productos.getProducts();
@@ -98,6 +120,12 @@ const getProduct = async (req, res) => {
 const getProductById = async (req, res) => {
   const productos = EcommerceFactory.createDAO("mongo");
   const product = await productos.getProdById(req.params.id);
+  res.status(200).json(product);
+};
+
+const getProductByCategory = async (req, res) => {
+  const productos = EcommerceFactory.createDAO("mongo");
+  const product = await productos.getProdByCategory(req.params.category);
   res.status(200).json(product);
 };
 
@@ -187,9 +215,12 @@ export const controller = {
   postRegister,
   getRegisterError,
   getLoginError,
+  getChat,
+  getChatByEmail,
   getSpecs,
   getProduct,
   getProductById,
+  getProductByCategory,
   deleteProductById,
   postProducts,
   postAdd,

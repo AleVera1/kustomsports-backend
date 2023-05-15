@@ -36,6 +36,15 @@ export default class EcommerceDAOMongo {
     }
   };
 
+  getProdById = async (category) => {
+    try {
+      await this.db.connect();
+      return await this.prodCollection.find({ category: category });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   deleteProdById = async (prodId) => {
     try {
       await this.db.connect();
